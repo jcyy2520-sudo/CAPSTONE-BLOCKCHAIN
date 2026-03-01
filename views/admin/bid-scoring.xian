@@ -1,0 +1,82 @@
+{{> head }}
+<body class="bg-gray-500/50 min-h-screen flex items-center justify-center p-8">
+  <!-- Modal -->
+  <div class="bg-white rounded-2xl card-shadow max-w-xl w-full">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <div>
+        <h2 class="text-lg font-bold text-gray-900">Score Bidder: Urban Infra Solutions</h2>
+        <p class="text-xs text-gray-400 mt-0.5">Project Ref: B-2024-UI-991 • Evaluator ID: EVAL-8821</p>
+      </div>
+      <a href="/admin/bid-evaluation" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></a>
+    </div>
+
+    <div class="p-6">
+      <!-- Blockchain Notice -->
+      <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-6">
+        <div class="flex items-center gap-2 mb-1"><i class="fas fa-shield-halved text-primary text-sm"></i><span class="text-[10px] font-bold text-primary uppercase tracking-wider">Blockchain Integrity Notice</span></div>
+        <p class="text-xs text-gray-500 leading-relaxed">Once submitted, these scores are permanently committed to the blockchain ledger. They cannot be altered, deleted, or overwritten. Your digital signature will be cryptographically attached to this evaluation.</p>
+      </div>
+
+      <!-- Section 1: Technical Score -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-bold text-gray-900 flex items-center gap-2"><span class="text-primary">∧</span> Section 1: Technical Score</h3>
+          <span class="px-2.5 py-1 bg-blue-50 text-primary text-[10px] font-bold rounded-full">60% Weight</span>
+        </div>
+        <div class="space-y-5">
+          <!-- Previous Experience -->
+          <div>
+            <div class="flex items-center justify-between mb-2"><span class="text-xs text-gray-600">Previous Experience</span><span class="text-xs font-bold text-primary">8 / 10</span></div>
+            <input type="range" min="0" max="10" value="8" class="w-full h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-primary">
+          </div>
+          <!-- Project Methodology -->
+          <div>
+            <div class="flex items-center justify-between mb-2"><span class="text-xs text-gray-600">Project Methodology</span><span class="text-xs font-bold text-primary">7 / 10</span></div>
+            <input type="range" min="0" max="10" value="7" class="w-full h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-primary">
+          </div>
+          <!-- Specialized Equipment -->
+          <div>
+            <div class="flex items-center justify-between mb-2"><span class="text-xs text-gray-600">Specialized Equipment</span><span class="text-xs font-bold text-primary">9 / 10</span></div>
+            <input type="range" min="0" max="10" value="9" class="w-full h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-primary">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Financial Score -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-chart-pie text-primary text-sm"></i> Section 2: Financial Score</h3>
+          <span class="px-2.5 py-1 bg-blue-50 text-primary text-[10px] font-bold rounded-full">40% Weight</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-lg p-4">
+            <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Bid Price</div>
+            <div class="text-lg font-extrabold text-gray-900">$1,240,000.00</div>
+          </div>
+          <div class="bg-green-50 border border-green-100 rounded-lg p-4">
+            <div class="text-[10px] text-success-green uppercase tracking-wider font-bold mb-1">Automated Score</div>
+            <div class="text-lg font-extrabold text-primary">38.2 / 40</div>
+          </div>
+        </div>
+        <p class="text-[10px] text-gray-400 italic mt-2">Financial score is automatically calculated using the Inverse Proportion Method relative to the lowest bid.</p>
+      </div>
+
+      <!-- Section 3: Evaluator Justification -->
+      <div class="mb-4">
+        <h3 class="text-sm font-bold text-gray-900 flex items-center gap-2 mb-3"><i class="fas fa-edit text-primary text-sm"></i> Section 3: Evaluator Justification</h3>
+        <textarea placeholder="Provide detailed justification for the technical scores provided above..." class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm h-24 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"></textarea>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="flex items-center justify-between px-6 py-4 border-t border-gray-100">
+      <div class="flex items-center gap-2 text-xs text-gray-400"><i class="fas fa-lock text-xs"></i> Secured by AES-256</div>
+      <div class="flex items-center gap-3">
+        <a href="/admin/bid-evaluation" class="text-sm text-gray-500 font-medium hover:text-gray-700">Cancel</a>
+        <button class="px-5 py-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-bold rounded-lg btn-shadow flex items-center gap-2"><i class="fas fa-fingerprint text-xs"></i> Commit Score to Blockchain</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

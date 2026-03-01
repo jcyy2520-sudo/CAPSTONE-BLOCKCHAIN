@@ -1,0 +1,119 @@
+{{> head }}
+<body class="bg-gray-500/50 min-h-screen flex items-center justify-center p-8">
+  <!-- Modal Overlay -->
+  <div class="bg-white rounded-2xl card-shadow max-w-2xl w-full">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center"><i class="fas fa-shield-halved text-primary text-lg"></i></div>
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Blockchain Verification Certificate</h2>
+          <p class="text-xs text-gray-400">verify.procurement.gov.ph</p>
+        </div>
+      </div>
+      <a href="/admin/dashboard" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></a>
+    </div>
+
+    <!-- Transaction Info -->
+    <div class="px-6 pt-5">
+      <div class="flex items-center justify-between mb-2">
+        <div>
+          <span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Transaction ID (Hash)</span>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-xs font-mono text-gray-600">0x8F2d...3a0c7b1a4f5d2a8b3c6e9d0f1a2b3c4d5e6f7a8b9c0d1e2f3a4...</span>
+            <button class="text-gray-300 hover:text-primary"><i class="fas fa-copy text-xs"></i></button>
+          </div>
+        </div>
+        <div>
+          <span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Status</span>
+          <div class="flex items-center gap-1.5 mt-1">
+            <i class="fas fa-check-circle text-success-green text-sm"></i>
+            <span class="text-xs font-bold text-success-green">Immutable & Verified</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-1 bg-gradient-to-r from-primary via-green-400 to-primary rounded-full my-4"></div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="px-6 pb-4">
+      <div class="grid grid-cols-2 gap-6">
+        <!-- System Database -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-database text-primary text-sm"></i>
+            <span class="text-xs font-bold text-primary uppercase tracking-wider">System Database</span>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Bid Amount</span>
+              <div class="text-sm font-bold text-gray-900 mt-1">₱1,250,000.00</div>
+            </div>
+            <div>
+              <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Timestamp</span>
+              <div class="text-sm font-bold text-gray-900 mt-1">2023-10-27 14:30:05 UTC</div>
+            </div>
+            <div>
+              <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Document Hash (SHA-256)</span>
+              <div class="text-[10px] font-mono text-gray-500 mt-1 break-all">a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blockchain Ledger -->
+        <div class="bg-blue-50/50 rounded-xl p-4 border border-blue-100">
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-link text-primary text-sm"></i>
+            <span class="text-xs font-bold text-primary uppercase tracking-wider">Blockchain Ledger</span>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Bid Amount</span>
+                <div class="text-sm font-bold text-gray-900 mt-1">₱1,250,000.00</div>
+              </div>
+              <i class="fas fa-check-circle text-success-green"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Timestamp</span>
+                <div class="text-sm font-bold text-gray-900 mt-1">2023-10-27 14:30:05 UTC</div>
+              </div>
+              <i class="fas fa-check-circle text-success-green"></i>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Document Hash (SHA-256)</span>
+                <div class="text-[10px] font-mono text-gray-500 mt-1 break-all">a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2</div>
+              </div>
+              <i class="fas fa-check-circle text-success-green"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Details -->
+    <div class="px-6 pb-4">
+      <button class="w-full flex items-center justify-between py-3 border-t border-b border-gray-100 text-gray-500 hover:text-gray-700" onclick="this.nextElementSibling.classList.toggle('hidden')">
+        <span class="text-sm font-medium flex items-center gap-2"><i class="fas fa-chevron-down text-xs"></i> Technical Details</span>
+      </button>
+      <div class="hidden py-3 text-xs text-gray-500 space-y-2">
+        <div class="flex justify-between"><span>Block Number:</span><span class="font-mono">#18,432,091</span></div>
+        <div class="flex justify-between"><span>Gas Used:</span><span class="font-mono">0.0023 ETH</span></div>
+        <div class="flex justify-between"><span>Network:</span><span>Private Ethereum L2</span></div>
+        <div class="flex justify-between"><span>Validator:</span><span class="font-mono">0x8a3f...2b1c</span></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
+      <div class="flex items-center gap-2 text-xs text-gray-400"><i class="fas fa-lock text-xs"></i> Secured by MuniciChain Ledger</div>
+      <div class="flex items-center gap-3">
+        <a href="/admin/dashboard" class="px-4 py-2 text-sm text-gray-500 font-medium hover:text-gray-700">Close</a>
+        <button class="px-5 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-lg flex items-center gap-2"><i class="fas fa-download text-xs"></i> Download Audit Proof</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

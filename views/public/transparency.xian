@@ -1,0 +1,236 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center"><i class="fas fa-globe text-white text-xs"></i></div>
+      <span class="text-sm font-bold text-gray-900">MuniAudit: Public Transparency Portal</span>
+    </div>
+    <nav class="flex items-center gap-6">
+      <a href="/public/transparency" class="text-sm text-gray-500 hover:text-gray-800">Home</a>
+      <a href="/public/transparency" class="text-sm text-gray-500 hover:text-gray-800">Projects</a>
+      <a href="/admin/verification" class="text-sm text-gray-500 hover:text-gray-800">Verify</a>
+      <a href="/audit/report" class="text-sm text-gray-500 hover:text-gray-800">Reports</a>
+      <a href="/login" class="text-sm text-gray-500 hover:text-gray-800">Login</a>
+      <a href="/register" class="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark">Citizen Sign Up</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-16 px-8 text-center">
+    <h1 class="text-4xl font-extrabold text-white mb-4 max-w-2xl mx-auto leading-tight">Immutable Records. Transparent Governance.</h1>
+    <p class="text-sm text-blue-200 max-w-lg mx-auto leading-relaxed mb-8">Access real-time procurement data verified by blockchain technology. Monitor municipal spending, track bidding milestones, and verify the integrity of every project.</p>
+    <div class="flex items-center justify-center gap-4">
+      <button class="px-6 py-3 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-lg flex items-center gap-2"><i class="fas fa-search"></i> Search Projects</button>
+      <button class="px-6 py-3 bg-white/10 border border-white/20 text-white text-sm font-semibold rounded-lg hover:bg-white/20 flex items-center gap-2"><i class="fas fa-shield-halved"></i> Verify Integrity</button>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="max-w-6xl mx-auto px-8 -mt-6 mb-8">
+    <div class="grid grid-cols-4 gap-4">
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Total Active Projects</div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-gray-900">142</span>
+          <span class="text-[10px] bg-green-50 text-success-green font-bold px-2 py-0.5 rounded-full">+12% this month</span>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Budget Utilized</div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-gray-900">₱48.5M</span>
+          <span class="text-[10px] text-gray-400 font-medium">YTD</span>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Avg. Bidders per Project</div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-gray-900">5.8</span>
+          <span class="text-[10px] bg-yellow-50 text-yellow-600 font-bold px-2 py-0.5 rounded-full">High Competition</span>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Completed Audits</div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-gray-900">89</span>
+          <span class="text-[10px] bg-green-50 text-success-green font-bold px-2 py-0.5 rounded-full">100% Verified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects + Timeline -->
+  <section class="max-w-6xl mx-auto px-8 mb-8">
+    <div class="grid grid-cols-5 gap-6">
+      <!-- Projects Table -->
+      <div class="col-span-3">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-gray-900">Latest Municipal Projects</h2>
+          <a href="/public/transparency" class="text-xs text-primary font-semibold hover:underline">View All</a>
+        </div>
+        <!-- Search -->
+        <div class="flex items-center gap-3 mb-4">
+          <div class="relative flex-1">
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 text-sm"></i>
+            <input type="text" placeholder="Search by project name, ID, or location..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+          </div>
+          <button class="p-2.5 border border-gray-200 rounded-lg hover:bg-gray-50"><i class="fas fa-sliders-h text-gray-400"></i></button>
+        </div>
+        <div class="bg-white rounded-xl card-shadow overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100">
+                <th class="text-left px-4 py-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Project ID</th>
+                <th class="text-left px-3 py-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Title & Location</th>
+                <th class="text-right px-3 py-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Budget</th>
+                <th class="text-center px-3 py-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                <th class="text-center px-3 py-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-50 hover:bg-gray-50/50">
+                <td class="px-4 py-3 font-mono text-xs text-gray-400">PRJ-2023-001</td>
+                <td class="px-3 py-3">
+                  <div class="font-semibold text-gray-900">Road Widening - Brgy. San Jose</div>
+                  <div class="text-[10px] text-gray-400">Zone 1 • Infrastructure</div>
+                </td>
+                <td class="px-3 py-3 text-right font-semibold text-gray-700">₱5,000,000</td>
+                <td class="px-3 py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Awarded</span></td>
+                <td class="px-3 py-3 text-center"><button class="text-gray-400 hover:text-gray-600"><i class="fas fa-chevron-right text-xs"></i></button></td>
+              </tr>
+              <tr class="border-b border-gray-50 hover:bg-gray-50/50">
+                <td class="px-4 py-3 font-mono text-xs text-gray-400">PRJ-2023-004</td>
+                <td class="px-3 py-3">
+                  <div class="font-semibold text-gray-900">School Renovation - Central</div>
+                  <div class="text-[10px] text-gray-400">Poblacion • Education</div>
+                </td>
+                <td class="px-3 py-3 text-right font-semibold text-gray-700">₱2,500,000</td>
+                <td class="px-3 py-3 text-center"><span class="px-2 py-0.5 bg-blue-50 text-primary text-[10px] font-bold rounded-full">Bidding</span></td>
+                <td class="px-3 py-3 text-center"><button class="text-gray-400 hover:text-gray-600"><i class="fas fa-chevron-right text-xs"></i></button></td>
+              </tr>
+              <tr class="border-b border-gray-50 hover:bg-gray-50/50">
+                <td class="px-4 py-3 font-mono text-xs text-gray-400">PRJ-2023-012</td>
+                <td class="px-3 py-3">
+                  <div class="font-semibold text-gray-900">Solar Streetlights Install</div>
+                  <div class="text-[10px] text-gray-400">Zone 4 • Utilities</div>
+                </td>
+                <td class="px-3 py-3 text-right font-semibold text-gray-700">₱800,000</td>
+                <td class="px-3 py-3 text-center"><span class="px-2 py-0.5 bg-yellow-50 text-yellow-600 text-[10px] font-bold rounded-full">Review</span></td>
+                <td class="px-3 py-3 text-center"><button class="text-gray-400 hover:text-gray-600"><i class="fas fa-chevron-right text-xs"></i></button></td>
+              </tr>
+              <tr class="border-b border-gray-50 hover:bg-gray-50/50">
+                <td class="px-4 py-3 font-mono text-xs text-gray-400">PRJ-2023-015</td>
+                <td class="px-3 py-3">
+                  <div class="font-semibold text-gray-900">Health Center Supplies</div>
+                  <div class="text-[10px] text-gray-400">Poblacion • Health</div>
+                </td>
+                <td class="px-3 py-3 text-right font-semibold text-gray-700">₱300,000</td>
+                <td class="px-3 py-3 text-center"><span class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full">Closed</span></td>
+                <td class="px-3 py-3 text-center"><button class="text-gray-400 hover:text-gray-600"><i class="fas fa-chevron-right text-xs"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Timeline + Efficiency -->
+      <div class="col-span-2 space-y-6">
+        <!-- Project Timeline -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-gray-900">Project Timeline: PRJ-2023-001</h3>
+            <i class="fas fa-check-circle text-success-green"></i>
+          </div>
+          <p class="text-xs text-gray-400 mb-4">Road Widening - Brgy. San Jose</p>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-0.5 h-12 bg-gray-200"></div>
+              </div>
+              <div>
+                <div class="text-[10px] text-gray-400">OCT 24, 2023 - 09:30 AM</div>
+                <div class="text-sm font-bold text-gray-900">Notice of Award</div>
+                <div class="text-[10px] text-primary font-mono mt-0.5">⛓ Tx1D: 5b8F2...9...s</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div class="w-0.5 h-12 bg-gray-200"></div>
+              </div>
+              <div>
+                <div class="text-[10px] text-gray-400">OCT 18, 2023 - 02:00 PM</div>
+                <div class="text-sm font-bold text-gray-900">Bid Opening & Evaluation</div>
+                <div class="text-[10px] text-gray-500 mt-0.5">Winner: ABC Construction Corp.</div>
+                <div class="text-[10px] text-primary font-mono">⛓ Tx1D: 9c361...c...</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+              <div>
+                <div class="text-[10px] text-gray-400">OCT 01, 2023 - 08:00 AM</div>
+                <div class="text-sm font-bold text-gray-900">Invitation to Bid Posted</div>
+                <div class="text-[10px] text-primary font-mono mt-0.5">⛓ Tx1D: 3x1a8...s...</div>
+              </div>
+            </div>
+          </div>
+          <button class="w-full mt-4 py-2.5 bg-green-50 text-success-green text-sm font-semibold rounded-lg flex items-center justify-center gap-2">
+            <i class="fas fa-check-circle"></i> Verify Hash Consistency
+          </button>
+        </div>
+
+        <!-- Procurement Efficiency -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <h3 class="text-sm font-bold text-gray-900 mb-4">Procurement Efficiency</h3>
+          <div class="space-y-3 mb-4">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs text-gray-500">Bidder Participation Rate</span>
+                <span class="text-xs font-bold text-gray-700">85%</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width:85%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs text-gray-500">On-Time Completion</span>
+                <span class="text-xs font-bold text-gray-700">72%</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2"><div class="bg-yellow-400 rounded-full h-2" style="width:72%"></div></div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs text-gray-500">Savings from ABC</span>
+                <span class="text-xs font-bold text-gray-700">12%</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2"><div class="bg-success-green rounded-full h-2" style="width:12%"></div></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 pt-3 border-t border-gray-100">
+            <div class="text-center"><div class="text-lg font-extrabold text-gray-900">412</div><div class="text-[10px] text-gray-400">Total Bids</div></div>
+            <div class="text-center"><div class="text-lg font-extrabold text-red-500">3</div><div class="text-[10px] text-gray-400">Failed Biddings</div></div>
+            <div class="text-center"><div class="text-lg font-extrabold text-primary">56</div><div class="text-[10px] text-gray-400">Active Suppliers</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto py-4 border-t border-gray-100 bg-white">
+    <div class="max-w-6xl mx-auto px-8 flex items-center justify-between">
+      <span class="text-xs text-gray-400"><i class="fas fa-shield-halved text-gray-300 mr-1"></i> Powered by Municipal Blockchain Ledger v2.1</span>
+      <div class="flex gap-4">
+        <a href="#" class="text-xs text-gray-400 hover:text-gray-600">Privacy Policy</a>
+        <a href="#" class="text-xs text-gray-400 hover:text-gray-600">Terms of Service</a>
+        <a href="#" class="text-xs text-gray-400 hover:text-gray-600">COA Guidelines</a>
+        <a href="#" class="text-xs text-gray-400 hover:text-gray-600">Contact Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

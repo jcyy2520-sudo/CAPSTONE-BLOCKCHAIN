@@ -1,0 +1,140 @@
+{{> head }}
+<body class="gradient-bg min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur border-b border-gray-100">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+        <i class="fas fa-landmark text-white text-sm"></i>
+      </div>
+      <div class="leading-tight">
+        <div class="text-sm font-bold text-primary">Procurement System</div>
+        <div class="text-[10px] text-gray-400 tracking-wider uppercase">Municipality of San Isidro</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-right">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider">Network Status</div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-success-green rounded-full animate-pulse"></span>
+          <span class="text-xs font-semibold text-primary">Blockchain Online</span>
+        </div>
+      </div>
+      <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+        <i class="fas fa-user text-gray-400 text-sm"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md">
+      <!-- Title -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Municipal Procurement</h1>
+        <p class="text-sm text-gray-400">Blockchain-based Secure Ledger Access</p>
+        <div class="w-full h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full mt-4"></div>
+      </div>
+
+      <!-- Login Card -->
+      <div class="bg-white rounded-2xl card-shadow p-8">
+        <!-- Tabs -->
+        <div class="flex border border-gray-200 rounded-lg overflow-hidden mb-8">
+          <button id="tab-admin" onclick="switchTab('admin')" class="flex-1 py-3 text-sm font-semibold text-primary bg-blue-50 border-b-2 border-primary transition-all">
+            BAC Administrator
+          </button>
+          <button id="tab-bidder" onclick="switchTab('bidder')" class="flex-1 py-3 text-sm font-semibold text-gray-400 bg-white hover:bg-gray-50 transition-all">
+            Registered Bidder
+          </button>
+        </div>
+
+        <!-- Form -->
+        <form action="/login" method="POST">
+          <div class="mb-5">
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Email or Username</label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300">
+                <i class="fas fa-user text-sm"></i>
+              </span>
+              <input type="text" name="username" placeholder="e.g. admin@municipality.gov"
+                class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg text-sm text-gray-600 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Password</label>
+              <a href="/login" class="text-xs font-medium text-primary hover:underline">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300">
+                <i class="fas fa-lock text-sm"></i>
+              </span>
+              <input type="password" name="password" id="loginPassword" placeholder="••••••••"
+                class="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-lg text-sm text-gray-600 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all">
+              <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500">
+                <i class="fas fa-eye text-sm" id="eyeIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mb-6">
+            <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+            <label for="remember" class="text-sm text-gray-500">Remember this device for 30 days</label>
+          </div>
+
+          <button type="submit"
+            class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-lg btn-shadow transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+            <i class="fas fa-shield-halved"></i>
+            Secure Login
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-400 mt-6">
+          New bidder? <a href="/register" class="text-primary font-semibold hover:underline">Register your business</a>
+        </p>
+      </div>
+
+      <!-- Security Badge -->
+      <div class="flex justify-center mt-8">
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 border border-green-200 bg-green-50/50 rounded-full">
+          <i class="fas fa-check-circle text-success-green text-sm"></i>
+          <span class="text-xs font-bold text-success-green uppercase tracking-wider">System Secure & Verified</span>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex justify-center gap-6 mt-5">
+        <a href="#" class="text-[11px] text-gray-400 uppercase tracking-wider hover:text-gray-600">Privacy Policy</a>
+        <a href="#" class="text-[11px] text-gray-400 uppercase tracking-wider hover:text-gray-600">Security Protocols</a>
+        <a href="#" class="text-[11px] text-gray-400 uppercase tracking-wider hover:text-gray-600">Support</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function switchTab(tab) {
+      const adminTab = document.getElementById('tab-admin');
+      const bidderTab = document.getElementById('tab-bidder');
+      if (tab === 'admin') {
+        adminTab.className = 'flex-1 py-3 text-sm font-semibold text-primary bg-blue-50 border-b-2 border-primary transition-all';
+        bidderTab.className = 'flex-1 py-3 text-sm font-semibold text-gray-400 bg-white hover:bg-gray-50 transition-all';
+      } else {
+        bidderTab.className = 'flex-1 py-3 text-sm font-semibold text-primary bg-blue-50 border-b-2 border-primary transition-all';
+        adminTab.className = 'flex-1 py-3 text-sm font-semibold text-gray-400 bg-white hover:bg-gray-50 transition-all';
+      }
+    }
+    function togglePassword() {
+      const pw = document.getElementById('loginPassword');
+      const icon = document.getElementById('eyeIcon');
+      if (pw.type === 'password') {
+        pw.type = 'text';
+        icon.className = 'fas fa-eye-slash text-sm';
+      } else {
+        pw.type = 'password';
+        icon.className = 'fas fa-eye text-sm';
+      }
+    }
+  </script>
+</body>
+</html>

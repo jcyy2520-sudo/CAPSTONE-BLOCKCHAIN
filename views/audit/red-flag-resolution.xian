@@ -1,0 +1,158 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-gray-100 flex flex-col min-h-screen">
+    <div class="px-6 py-5 flex items-center gap-3 border-b border-gray-100">
+      <div class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center"><i class="fas fa-shield-alt text-white text-sm"></i></div>
+      <div><div class="text-base font-bold text-gray-900">MuniAudit</div><div class="text-[10px] text-gray-400 uppercase tracking-wider">COA Audit Portal</div></div>
+    </div>
+    <nav class="flex-1 py-4 px-3">
+      <a href="/audit/report" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-th-large w-5 text-center"></i> Dashboard</a>
+      <a href="/audit/report" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-folder-open w-5 text-center"></i> Projects</a>
+      <a href="/admin/red-flag-resolution" class="flex items-center gap-3 px-3 py-2.5 bg-red-50 text-red-600 rounded-lg text-sm font-semibold mb-1"><i class="fas fa-flag w-5 text-center"></i> Alerts <span class="ml-auto w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold">3</span></a>
+      <a href="/audit/report" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-clipboard-list w-5 text-center"></i> Audit Logs</a>
+      <a href="/admin/resolution-history" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-history w-5 text-center"></i> Resolution History</a>
+    </nav>
+    <div class="px-3 pb-4">
+      <a href="/login" class="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:text-red-500 text-sm"><i class="fas fa-sign-out-alt w-5 text-center"></i> Sign Out</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto">
+    <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-bold text-gray-900">Red Flag Resolution</h1>
+        <p class="text-xs text-gray-400">BAC-2023-045 &middot; Road Concreting Phase 2</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1.5 bg-red-50 text-red-500 text-xs font-bold rounded-full"><i class="fas fa-flag text-[10px]"></i> 3 Active Red Flags</span>
+        <div class="w-9 h-9 bg-indigo-100 rounded-full flex items-center justify-center"><i class="fas fa-user text-indigo-600 text-sm"></i></div>
+      </div>
+    </header>
+
+    <div class="px-8 py-6">
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Red Flag Cards -->
+        <div class="col-span-1 space-y-4">
+          <h2 class="text-sm font-bold text-gray-900 mb-2">Active Red Flags</h2>
+
+          <!-- HIGH -->
+          <div class="bg-white rounded-xl card-shadow p-5 border-l-4 border-red-500 cursor-pointer hover:ring-2 hover:ring-red-200 transition" onclick="this.classList.toggle('ring-2');this.classList.toggle('ring-red-300');">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 bg-red-50 text-red-500 text-[10px] font-bold rounded-full uppercase">High Severity</span>
+              <span class="text-[10px] text-gray-400">Oct 10, 2023</span>
+            </div>
+            <div class="text-sm font-bold text-gray-900 mb-1">Inconsistent Document Hash</div>
+            <p class="text-xs text-gray-500 leading-relaxed">Bid envelope for Metro Builders Inc. shows hash mismatch between system database and blockchain record at Block #18,425,108.</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-[10px] text-gray-400 font-mono"><i class="fas fa-cube text-[8px]"></i> Block #18,425,108</span>
+              <span class="text-[10px] text-gray-400"><i class="fas fa-file text-[8px]"></i> Bid Envelope</span>
+            </div>
+          </div>
+
+          <!-- MEDIUM -->
+          <div class="bg-white rounded-xl card-shadow p-5 border-l-4 border-orange-500 cursor-pointer hover:ring-2 hover:ring-orange-200 transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 bg-orange-50 text-orange-500 text-[10px] font-bold rounded-full uppercase">Medium Severity</span>
+              <span class="text-[10px] text-gray-400">Oct 10, 2023</span>
+            </div>
+            <div class="text-sm font-bold text-gray-900 mb-1">Delayed Bid Opening</div>
+            <p class="text-xs text-gray-500 leading-relaxed">The bid opening was conducted 48+ hours after the scheduled date, violating Section 29 of RA 9184 IRR.</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-[10px] text-gray-400"><i class="fas fa-clock text-[8px]"></i> 48h delay</span>
+              <span class="text-[10px] text-gray-400"><i class="fas fa-balance-scale text-[8px]"></i> RA 9184 Sec. 29</span>
+            </div>
+          </div>
+
+          <!-- LOW -->
+          <div class="bg-white rounded-xl card-shadow p-5 border-l-4 border-yellow-500 cursor-pointer hover:ring-2 hover:ring-yellow-200 transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 bg-yellow-50 text-yellow-600 text-[10px] font-bold rounded-full uppercase">Low Severity</span>
+              <span class="text-[10px] text-gray-400">Oct 20, 2023</span>
+            </div>
+            <div class="text-sm font-bold text-gray-900 mb-1">Missing Document Hash</div>
+            <p class="text-xs text-gray-500 leading-relaxed">Post-qualification phase has no blockchain timestamp recorded. This may be due to a system sync error.</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-[10px] text-gray-400"><i class="fas fa-cube text-[8px]"></i> Block N/A</span>
+              <span class="text-[10px] text-gray-400"><i class="fas fa-file text-[8px]"></i> Post-Qual Record</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Violation Details & Resolution -->
+        <div class="col-span-2 space-y-6">
+          <!-- Violation Details -->
+          <div class="bg-white rounded-xl card-shadow p-6">
+            <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-search text-red-500"></i> Violation Details</h2>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Flag Type</div>
+                <div class="text-sm font-bold text-red-600">Inconsistent Document Hash</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Severity Level</div>
+                <div class="text-sm font-bold text-red-600">HIGH — Requires Immediate Action</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Affected Document</div>
+                <div class="text-sm font-semibold text-gray-700">Bid Envelope — Metro Builders Inc.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Blockchain Reference</div>
+                <div class="text-sm font-semibold text-gray-700 font-mono">Block #18,425,108</div>
+              </div>
+            </div>
+            <div class="bg-red-50 rounded-lg p-4 border border-red-100">
+              <div class="text-[10px] text-red-500 uppercase tracking-wider font-semibold mb-2">Hash Comparison</div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div><span class="text-gray-500">System DB:</span> <span class="font-mono text-gray-700">0x7b1ee2...a9f1</span></div>
+                <div><span class="text-gray-500">Blockchain:</span> <span class="font-mono text-red-600 font-bold">0x4c2dd1...b3e8</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resolution Framework -->
+          <div class="bg-white rounded-xl card-shadow p-6">
+            <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-gavel text-indigo-600"></i> Resolution Framework</h2>
+            <div class="space-y-4">
+              <div>
+                <label class="text-xs font-semibold text-gray-700 mb-1.5 block">Resolution Type</label>
+                <select class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 bg-white">
+                  <option>Select resolution type...</option>
+                  <option>Document Re-upload Required</option>
+                  <option>Investigation Required</option>
+                  <option>System Error — Auto-Correct</option>
+                  <option>Bid Disqualification</option>
+                  <option>Escalate to Higher Authority</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-700 mb-1.5 block">BAC Administrator Justification</label>
+                <textarea rows="4" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 resize-none" placeholder="Provide a detailed explanation for the resolution action..."></textarea>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-700 mb-1.5 block">Supporting Evidence</label>
+                <div class="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center hover:border-indigo-300 transition cursor-pointer">
+                  <i class="fas fa-cloud-upload-alt text-gray-300 text-2xl mb-2"></i>
+                  <div class="text-sm text-gray-500">Drop files here or <span class="text-indigo-600 font-semibold">browse</span></div>
+                  <div class="text-[10px] text-gray-400 mt-1">PDF, DOC, PNG — Max 10MB</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-indigo-50 rounded-lg p-4 mt-4 flex items-start gap-3">
+              <i class="fas fa-info-circle text-indigo-600 mt-0.5"></i>
+              <div class="text-xs text-indigo-700 leading-relaxed">This resolution will be permanently recorded on the blockchain. The justification, supporting evidence hash, and resolution type will be committed to an immutable audit trail for COA review.</div>
+            </div>
+            <div class="flex items-center justify-end gap-3 mt-5">
+              <button class="px-5 py-2.5 text-gray-500 text-sm font-semibold hover:text-gray-700">Cancel</button>
+              <button class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-lg flex items-center gap-2"><i class="fas fa-link text-xs"></i> Commit Resolution to Blockchain</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,133 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2"><div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div><span class="text-lg font-bold text-gray-900">Procurement Ledger</span></div>
+    <nav class="flex items-center gap-6">
+      <a href="/admin/dashboard" class="text-sm text-gray-500 hover:text-gray-800">Dashboard</a>
+      <a href="/admin/dashboard" class="text-sm text-gray-500 hover:text-gray-800">Projects</a>
+      <a href="/admin/bid-evaluation" class="text-sm text-gray-500 hover:text-gray-800">Bidders</a>
+      <a href="/admin/final-ranking" class="text-sm text-gray-500 hover:text-gray-800">Reports</a>
+    </nav>
+    <div class="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center"><i class="fas fa-user text-orange-500 text-sm"></i></div>
+  </header>
+
+  <main class="flex-1 px-8 py-8 max-w-5xl mx-auto w-full">
+    <!-- Status & Title -->
+    <div class="flex items-center gap-3 mb-1">
+      <span class="px-2.5 py-1 bg-green-50 text-success-green text-[10px] font-bold uppercase tracking-wider rounded-full">Evaluation Complete</span>
+      <span class="text-xs text-gray-400 font-mono">BAC-2023-089</span>
+    </div>
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-3xl font-extrabold text-gray-900">Main St. Sewer Rehabilitation</h1>
+      <a href="/admin/dashboard" class="text-sm text-gray-500 font-medium hover:text-primary flex items-center gap-2"><i class="fas fa-arrow-left text-xs"></i> Back to Dashboard</a>
+    </div>
+
+    <!-- Winner + Blockchain -->
+    <div class="grid grid-cols-2 gap-6 mb-8">
+      <!-- Winning Bidder -->
+      <div class="bg-white rounded-xl card-shadow p-6">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-trophy text-orange-500"></i> Winning Bidder Summary</h2>
+        <div class="flex gap-4">
+          <div class="w-24 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-building text-blue-300 text-2xl"></i></div>
+          <div>
+            <span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Rank 1 - LCRB</span>
+            <div class="text-lg font-extrabold text-gray-900 mt-1">BuildRight Infrastructure Corp.</div>
+            <div class="grid grid-cols-2 gap-3 mt-2">
+              <div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Final Total Score</div><div class="text-xl font-extrabold text-orange-500">98.50 <span class="text-xs text-gray-400 font-medium">/100</span></div></div>
+              <div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Bid Amount</div><div class="text-xl font-extrabold text-gray-900">$1,240,000.00</div></div>
+            </div>
+            <a href="/admin/noa-generation" class="inline-flex items-center gap-2 mt-3 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-lg"><span>Generate Notice of Award</span> <i class="fas fa-arrow-right text-xs"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blockchain Status -->
+      <div class="bg-white rounded-xl card-shadow p-6">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-link text-primary"></i> Blockchain Status</h2>
+        <div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Consensus Hash</div>
+          <div class="bg-gray-50 rounded-lg p-2 mb-4 font-mono text-[10px] text-gray-500 break-all">9x72a9...d4f1e92c0b6a1f2e3d4c5b6a7f8e9 d0c1b2a3</div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-2">BAC Digital Signatures</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between"><span class="text-xs text-gray-700">Chairman R. Santos</span><i class="fas fa-check-circle text-success-green"></i></div>
+            <div class="flex items-center justify-between"><span class="text-xs text-gray-700">Member A. Chen</span><i class="fas fa-check-circle text-success-green"></i></div>
+            <div class="flex items-center justify-between"><span class="text-xs text-gray-700">Member L. Garcia</span><i class="fas fa-check-circle text-success-green"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Ranking Table -->
+    <div class="bg-white rounded-xl card-shadow p-6 mb-8">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-bold text-gray-900">Final Ranking Table</h2>
+        <button class="text-xs text-orange-500 font-semibold flex items-center gap-1 hover:underline"><i class="fas fa-download text-xs"></i> Download Official Report</button>
+      </div>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-100">
+          <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider w-16">Rank</th>
+          <th class="text-left pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Bidder Name</th>
+          <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Technical Score (60%)</th>
+          <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Financial Score (40%)</th>
+          <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Total Score</th>
+          <th class="text-right pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Bid Price</th>
+        </tr></thead>
+        <tbody>
+          <tr class="border-b border-gray-50 bg-orange-50/30">
+            <td class="py-4 text-center"><span class="w-7 h-7 bg-orange-500 text-white rounded-full inline-flex items-center justify-center text-xs font-bold">1</span></td>
+            <td class="py-4 font-bold text-gray-900 flex items-center gap-2">BuildRight Infrastructure Corp. <i class="fas fa-check-circle text-success-green text-xs"></i></td>
+            <td class="py-4 text-center text-gray-700">58.50</td>
+            <td class="py-4 text-center text-gray-700">40.00</td>
+            <td class="py-4 text-center font-extrabold text-success-green">98.50</td>
+            <td class="py-4 text-right font-semibold text-gray-900 font-mono">$1,240,000.00</td>
+          </tr>
+          <tr class="border-b border-gray-50">
+            <td class="py-4 text-center"><span class="w-7 h-7 bg-gray-200 text-gray-500 rounded-full inline-flex items-center justify-center text-xs font-bold">2</span></td>
+            <td class="py-4 font-semibold text-gray-700">Apex Construction Solutions</td>
+            <td class="py-4 text-center text-gray-700">56.20</td>
+            <td class="py-4 text-center text-gray-700">38.45</td>
+            <td class="py-4 text-center font-bold text-gray-700">94.65</td>
+            <td class="py-4 text-right font-semibold text-gray-700 font-mono">$1,290,000.00</td>
+          </tr>
+          <tr class="border-b border-gray-50">
+            <td class="py-4 text-center"><span class="w-7 h-7 bg-gray-200 text-gray-500 rounded-full inline-flex items-center justify-center text-xs font-bold">3</span></td>
+            <td class="py-4 font-semibold text-gray-700">CityPave Group</td>
+            <td class="py-4 text-center text-gray-700">54.00</td>
+            <td class="py-4 text-center text-gray-700">39.10</td>
+            <td class="py-4 text-center font-bold text-gray-700">93.10</td>
+            <td class="py-4 text-right font-semibold text-gray-700 font-mono">$1,268,000.00</td>
+          </tr>
+          <tr>
+            <td class="py-4 text-center"><span class="w-7 h-7 bg-gray-200 text-gray-500 rounded-full inline-flex items-center justify-center text-xs font-bold">4</span></td>
+            <td class="py-4 font-semibold text-gray-700">Foundation Masters Inc.</td>
+            <td class="py-4 text-center text-gray-700">52.15</td>
+            <td class="py-4 text-center text-gray-700">36.20</td>
+            <td class="py-4 text-center font-bold text-gray-700">88.35</td>
+            <td class="py-4 text-right font-semibold text-gray-700 font-mono">$1,370,500.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="flex items-center justify-between">
+      <span class="text-xs text-gray-400"><i class="fas fa-clock text-xs"></i> Last updated: Oct 24, 2023 -14:32 GMT</span>
+      <div class="flex items-center gap-3">
+        <button class="px-5 py-2.5 text-orange-500 text-sm font-semibold hover:underline flex items-center gap-2"><i class="fas fa-print text-xs"></i> Print View</button>
+        <a href="/admin/dashboard" class="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-lg">Return to Dashboard</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-t border-gray-100 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-8 flex items-center justify-between">
+      <div class="flex items-center gap-2"><div class="w-5 h-5 bg-gray-200 rounded flex items-center justify-center"><i class="fas fa-cube text-gray-400 text-[8px]"></i></div><span class="text-xs text-gray-400">Procurement System V2.4.0</span></div>
+      <div class="flex gap-4"><span class="text-xs text-gray-400">Secure Blockchain-Backed Procurement Node #88219-BAC</span></div>
+      <div class="flex gap-4"><a href="#" class="text-xs text-gray-400 hover:text-gray-600">Security Audit</a><a href="#" class="text-xs text-gray-400 hover:text-gray-600">Terms of Service</a><a href="#" class="text-xs text-gray-400 hover:text-gray-600">API Docs</a></div>
+    </div>
+  </footer>
+</body>
+</html>

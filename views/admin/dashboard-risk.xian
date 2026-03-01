@@ -1,0 +1,130 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-gray-100 flex flex-col min-h-screen">
+    <div class="px-6 py-5 flex items-center gap-3 border-b border-gray-100">
+      <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-sm"></i></div>
+      <div><div class="text-base font-bold text-gray-900">ProcureChain</div><div class="text-[10px] text-gray-400 uppercase tracking-wider">BAC Admin Portal</div></div>
+    </div>
+    <nav class="flex-1 py-4 px-3">
+      <div class="text-[10px] text-gray-400 uppercase px-3 mb-2 tracking-wider font-semibold">Main Menu</div>
+      <a href="/admin/dashboard-risk" class="flex items-center gap-3 px-3 py-2.5 bg-primary-light text-primary rounded-lg text-sm font-semibold mb-1"><i class="fas fa-th-large w-5 text-center"></i> Dashboard</a>
+      <a href="/admin/dashboard" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-folder-open w-5 text-center"></i> Procurements</a>
+      <a href="/admin/bid-evaluation" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-gavel w-5 text-center"></i> Bids Management</a>
+      <a href="/admin/dashboard" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-building w-5 text-center"></i> Suppliers</a>
+      <a href="/admin/final-ranking" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-chart-bar w-5 text-center"></i> Reports</a>
+      <div class="text-[10px] text-gray-400 uppercase px-3 mt-4 mb-2 tracking-wider font-semibold">Blockchain</div>
+      <a href="/audit/report" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-link w-5 text-center"></i> Blockchain Logs</a>
+      <a href="/admin/smart-contract" class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm mb-1"><i class="fas fa-cog w-5 text-center"></i> Settings</a>
+    </nav>
+    <div class="px-3 pb-4">
+      <a href="/login" class="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:text-red-500 text-sm"><i class="fas fa-sign-out-alt w-5 text-center"></i> Sign Out</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto">
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+      <div><h1 class="text-xl font-bold text-gray-900">Dashboard</h1><p class="text-xs text-gray-400">Welcome back, Administrator</p></div>
+      <div class="flex items-center gap-4">
+        <div class="relative"><input type="text" placeholder="Search projects..." class="pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary/20"><i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i></div>
+        <button class="relative w-9 h-9 bg-gray-50 rounded-lg flex items-center justify-center"><i class="fas fa-bell text-gray-500 text-sm"></i><span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[8px] flex items-center justify-center font-bold">3</span></button>
+        <div class="flex items-center gap-2"><div class="w-9 h-9 bg-primary-light rounded-full flex items-center justify-center"><i class="fas fa-user text-primary text-sm"></i></div><div><div class="text-sm font-semibold text-gray-700">Admin User</div><div class="text-[10px] text-gray-400">BAC Chairman</div></div></div>
+      </div>
+    </header>
+
+    <div class="px-8 py-6">
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+          <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Active Procurements</div><div class="text-3xl font-extrabold text-gray-900 mt-1">12</div><div class="text-[10px] text-success-green mt-1"><i class="fas fa-arrow-up text-[8px]"></i> +3 from last month</div></div>
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-folder-open text-primary text-xl"></i></div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+          <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Total Bids</div><div class="text-3xl font-extrabold text-gray-900 mt-1">45</div><div class="text-[10px] text-success-green mt-1"><i class="fas fa-arrow-up text-[8px]"></i> +12 this week</div></div>
+          <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-gavel text-success-green text-xl"></i></div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+          <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Blockchain Integrity</div><div class="text-3xl font-extrabold text-success-green mt-1">100%</div><div class="text-[10px] text-gray-400 mt-1">All records verified</div></div>
+          <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center"><i class="fas fa-shield-alt text-indigo-600 text-xl"></i></div>
+        </div>
+      </div>
+
+      <!-- Table & Notifications grid -->
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Procurement Table -->
+        <div class="col-span-2 bg-white rounded-xl card-shadow p-6">
+          <div class="flex items-center justify-between mb-5">
+            <h2 class="text-base font-bold text-gray-900">Procurement Lifecycle Tracking</h2>
+            <button class="text-xs text-primary font-semibold hover:underline">View All Projects</button>
+          </div>
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-gray-100">
+              <th class="text-left pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Project Name</th>
+              <th class="text-left pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Reference No.</th>
+              <th class="text-center pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Stage</th>
+              <th class="text-center pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Risk Level</th>
+              <th class="text-center pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Blockchain</th>
+            </tr></thead>
+            <tbody>
+              <tr class="border-b border-gray-50">
+                <td class="py-3 font-semibold text-gray-900">Road Concreting Phase 2</td>
+                <td class="py-3 text-gray-500 font-mono text-xs">BAC-2023-045</td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Awarded</span></td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-red-50 text-red-500 text-[10px] font-bold rounded-full">OVERDUE</span></td>
+                <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="py-3 font-semibold text-gray-900">Drainage System Upgrade</td>
+                <td class="py-3 text-gray-500 font-mono text-xs">BAC-2023-052</td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-blue-50 text-primary text-[10px] font-bold rounded-full">Evaluation</span></td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">LOW RISK</span></td>
+                <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="py-3 font-semibold text-gray-900">Public Market Renovation</td>
+                <td class="py-3 text-gray-500 font-mono text-xs">BAC-2023-061</td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-orange-50 text-orange-500 text-[10px] font-bold rounded-full">Pre-Bid</span></td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-orange-50 text-orange-500 text-[10px] font-bold rounded-full">DELAY</span></td>
+                <td class="py-3 text-center"><i class="fas fa-spinner text-orange-400"></i></td>
+              </tr>
+              <tr>
+                <td class="py-3 font-semibold text-gray-900">IT Equipment Supply</td>
+                <td class="py-3 text-gray-500 font-mono text-xs">BAC-2023-078</td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] font-bold rounded-full">Posting</span></td>
+                <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">LOW RISK</span></td>
+                <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Notifications -->
+        <div class="bg-white rounded-xl card-shadow p-6">
+          <h2 class="text-base font-bold text-gray-900 mb-4">Notifications & Deadlines</h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
+              <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-exclamation-triangle text-red-500 text-xs"></i></div>
+              <div><div class="text-xs font-bold text-gray-900">Bid Deadline Tomorrow</div><div class="text-[10px] text-gray-500">Road Concreting (BAC-045) — Oct 25, 5:00 PM</div></div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
+              <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-orange-500 text-xs"></i></div>
+              <div><div class="text-xs font-bold text-gray-900">Evaluation Overdue</div><div class="text-[10px] text-gray-500">Drainage System — 2 days past deadline</div></div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+              <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-user-plus text-primary text-xs"></i></div>
+              <div><div class="text-xs font-bold text-gray-900">New Bidder Registration</div><div class="text-[10px] text-gray-500">Metro Builders Inc. — Pending verification</div></div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+              <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-success-green text-xs"></i></div>
+              <div><div class="text-xs font-bold text-gray-900">Smart Contract Deployed</div><div class="text-[10px] text-gray-500">Public Market project rules now on-chain</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,137 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between px-8 py-4 bg-white border-b border-gray-100">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+        <i class="fas fa-landmark text-white text-xs"></i>
+      </div>
+      <span class="text-lg font-bold text-gray-900">ProcureChain</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-right">
+        <div class="text-[10px] text-gray-400 uppercase tracking-wider">Connected Wallet</div>
+        <span class="text-xs font-mono font-semibold text-gray-600">0x71c...A2E3</span>
+      </div>
+      <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+        <i class="fas fa-user text-gray-400 text-sm"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 px-4 py-12">
+    <div class="max-w-2xl mx-auto text-center">
+      <!-- Success Icon -->
+      <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center border-4 border-green-100">
+          <i class="fas fa-check-circle text-success-green text-4xl"></i>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-3">Registration Successfully Verified</h1>
+      <p class="text-sm text-gray-500 leading-relaxed max-w-lg mx-auto mb-10">
+        Your application for the municipal procurement system has been
+        cryptographically signed and added to the processing queue.
+      </p>
+
+      <!-- Receipt Card -->
+      <div class="bg-white rounded-2xl card-shadow p-6 mb-10 text-left">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-receipt text-primary text-sm"></i>
+            <span class="text-xs font-bold text-gray-700 uppercase tracking-wider">Official Registration Receipt</span>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-50 border border-yellow-200 rounded-full text-[10px] font-bold text-yellow-600 uppercase tracking-wider">
+            <i class="fas fa-clock text-xs"></i>
+            Awaiting Review
+          </span>
+        </div>
+
+        <!-- Blockchain Reference -->
+        <div class="bg-gray-50 rounded-xl p-4 mb-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fas fa-link text-primary text-xs"></i>
+            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Immutable Blockchain Reference ID</span>
+          </div>
+          <p class="text-sm font-mono text-primary font-semibold tracking-wide">0x71c520d1d90214a601237e848A9c1234567A2E3</p>
+        </div>
+
+        <!-- Details -->
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Submission Timestamp</span>
+            <p class="text-sm font-semibold text-gray-800 mt-1">Oct 24, 2023 — 14:30:05 UTC</p>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Issuing Authority</span>
+            <p class="text-sm font-semibold text-gray-800 mt-1">Municipality of San Isidro BAC</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="text-left mb-10">
+        <h2 class="text-lg font-bold text-gray-900 mb-5">Next Steps in the Lifecycle</h2>
+        <div class="space-y-4">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4 bg-white rounded-xl card-shadow p-5">
+            <div class="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-sm font-bold text-primary">1</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Administrative Document Audit</h3>
+              <p class="text-xs text-gray-400">Procurement officers will verify legal and financial compliance within 3-5 business days.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex items-start gap-4 bg-white rounded-xl card-shadow p-5">
+            <div class="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-sm font-bold text-primary">2</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Identity Verification Layer</h3>
+              <p class="text-xs text-gray-400">A decentralized identity trigger will validate your credentials against municipal registries.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex items-start gap-4 bg-white rounded-xl card-shadow p-5">
+            <div class="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-sm font-bold text-primary">3</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Procurement Portal Access</h3>
+              <p class="text-xs text-gray-400">Upon successful verification, you will receive full bidding privileges for active tenders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center justify-center gap-4 mb-10">
+        <a href="/"
+          class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-8 rounded-lg btn-shadow transition-all text-sm">
+          <i class="fas fa-arrow-left text-xs"></i>
+          Return to Dashboard
+        </a>
+        <button
+          class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 font-semibold py-3.5 px-8 rounded-lg hover:bg-gray-50 transition-all text-sm">
+          <i class="fas fa-download text-xs"></i>
+          Download PDF Receipt
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-5 border-t border-gray-100 bg-white/50 text-center">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <i class="fas fa-lock text-gray-400 text-xs"></i>
+      <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Secured by ProcureChain Ledger</span>
+    </div>
+    <p class="text-xs text-gray-400">&copy; 2023 Municipal Procurement Office. All data is cryptographically secured and immutable.</p>
+  </footer>
+</body>
+</html>

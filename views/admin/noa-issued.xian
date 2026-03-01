@@ -1,0 +1,172 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Bar -->
+  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2"><div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div><span class="text-lg font-bold text-gray-900">Procurement Ledger</span></div>
+    <nav class="flex items-center gap-6">
+      <a href="/admin/dashboard" class="text-sm text-gray-500 hover:text-gray-800">Dashboard</a>
+      <a href="/admin/dashboard" class="text-sm text-gray-500 hover:text-gray-800">Projects</a>
+      <a href="/admin/bid-evaluation" class="text-sm text-gray-500 hover:text-gray-800">Bidders</a>
+      <a href="/admin/final-ranking" class="text-sm text-gray-500 hover:text-gray-800">Reports</a>
+    </nav>
+    <div class="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center"><i class="fas fa-user text-orange-500 text-sm"></i></div>
+  </header>
+
+  <main class="flex gap-0 min-h-[calc(100vh-65px)]">
+    <!-- Main NOA Content -->
+    <div class="flex-1 overflow-y-auto px-10 py-8 max-w-4xl">
+      <div class="flex items-center gap-3 mb-1">
+        <span class="px-2.5 py-1 bg-green-50 text-success-green text-[10px] font-bold uppercase tracking-wider rounded-full"><i class="fas fa-check-circle text-xs"></i> Notice Issued</span>
+        <span class="text-xs text-gray-400 font-mono">DOC-NOA-2023-089</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-6">Notice of Award — Issued</h1>
+
+      <!-- Awardee Info -->
+      <div class="bg-white rounded-xl card-shadow p-6 mb-6">
+        <h2 class="text-base font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-trophy text-orange-500"></i> Awardee Information</h2>
+        <div class="flex gap-5">
+          <div class="w-20 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-building text-blue-300 text-xl"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-1">
+              <span class="text-lg font-extrabold text-gray-900">BuildRight Infrastructure Corp.</span>
+              <span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full"><i class="fas fa-check-circle text-[8px]"></i> Verified</span>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mt-2">
+              <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Contract Amount</div><div class="text-base font-extrabold text-gray-900">₱1,240,000.00</div></div>
+              <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Project Name</div><div class="text-sm font-semibold text-gray-700">Main St. Sewer Rehabilitation</div></div>
+              <div><div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Award Date</div><div class="text-sm font-semibold text-gray-700">October 24, 2023</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Official NOA Letter -->
+      <div class="bg-white rounded-xl card-shadow p-8 mb-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center"><i class="fas fa-file-alt text-primary text-lg"></i></div>
+          <div>
+            <div class="text-base font-bold text-gray-900">Notice of Award</div>
+            <div class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Official Document — BAC Resolution No. 2023-089</div>
+          </div>
+        </div>
+        <div class="border-t border-gray-100 pt-6 text-sm text-gray-700 leading-relaxed space-y-4">
+          <p><strong>Date:</strong> October 24, 2023</p>
+          <p><strong>To:</strong><br>Mr. Roberto Sanchez<br>CEO, BuildRight Infrastructure Corp.<br>123 Industry Ave., Pasig City 1600</p>
+          <p><strong>Re: Award of Contract — Main Street Sewer Rehabilitation Project</strong></p>
+          <p>Dear Mr. Sanchez,</p>
+          <p>In accordance with the provisions of Republic Act No. 9184, and after conducting a thorough evaluation of all bids submitted for the above-referenced project, we are pleased to inform you that <strong>BuildRight Infrastructure Corp.</strong> has been determined as the <strong>Lowest Calculated Responsive Bid (LCRB)</strong>.</p>
+          <p>Your firm obtained the highest composite score of <strong>98.50 out of 100</strong>, based on the combined technical and financial evaluation criteria established by the BAC. The approved budget for the contract (ABC) is <strong>₱1,500,000.00</strong>, and your bid amount of <strong>₱1,240,000.00</strong> is within the allowable threshold.</p>
+          <p>Pursuant to Section 37 of the IRR of RA 9184, please submit the required post-qualification documents within <strong>five (5) calendar days</strong> from receipt of this Notice.</p>
+          <p>Congratulations.</p>
+        </div>
+      </div>
+
+      <!-- Digital Signatures -->
+      <div class="bg-white rounded-xl card-shadow p-6 mb-6">
+        <h2 class="text-base font-bold text-gray-900 mb-4"><i class="fas fa-signature text-orange-500"></i> Verified Digital Signatures</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-50 rounded-lg p-4 flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-success-green"></i></div>
+            <div>
+              <div class="text-sm font-bold text-gray-900">HON. ARTURO VALENCIA</div>
+              <div class="text-xs text-gray-500">BAC Chairman</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Signed Oct 24, 2023 14:12 GMT</div>
+            </div>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4 flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-success-green"></i></div>
+            <div>
+              <div class="text-sm font-bold text-gray-900">DR. LINDA RAMIREZ</div>
+              <div class="text-xs text-gray-500">BAC Vice Chairman</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Signed Oct 24, 2023 14:24 GMT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-white rounded-xl card-shadow p-6 mb-6">
+        <h2 class="text-base font-bold text-gray-900 mb-4"><i class="fas fa-route text-primary"></i> Next Steps</h2>
+        <div class="flex gap-4">
+          <div class="flex-1 bg-orange-50 rounded-lg p-4 text-center">
+            <div class="w-10 h-10 bg-orange-100 rounded-full mx-auto flex items-center justify-center mb-2"><span class="text-orange-500 font-bold text-sm">1</span></div>
+            <div class="text-sm font-bold text-gray-900">Post-Qualification</div>
+            <div class="text-xs text-gray-500 mt-1">Submit required documents within 5 days</div>
+          </div>
+          <div class="flex-1 bg-blue-50 rounded-lg p-4 text-center">
+            <div class="w-10 h-10 bg-blue-100 rounded-full mx-auto flex items-center justify-center mb-2"><span class="text-primary font-bold text-sm">2</span></div>
+            <div class="text-sm font-bold text-gray-900">Contract Signing</div>
+            <div class="text-xs text-gray-500 mt-1">Execute contract within 10 calendar days</div>
+          </div>
+          <div class="flex-1 bg-green-50 rounded-lg p-4 text-center">
+            <div class="w-10 h-10 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-2"><span class="text-success-green font-bold text-sm">3</span></div>
+            <div class="text-sm font-bold text-gray-900">Notice to Proceed</div>
+            <div class="text-xs text-gray-500 mt-1">Project commencement within 7 days of signing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center justify-between">
+        <span class="text-xs text-gray-400"><i class="fas fa-lock text-xs"></i> This document is sealed on the blockchain and cannot be modified.</span>
+        <div class="flex items-center gap-3">
+          <button class="px-5 py-2.5 text-orange-500 text-sm font-semibold hover:underline flex items-center gap-2"><i class="fas fa-download"></i> Download PDF</button>
+          <button class="px-5 py-2.5 text-orange-500 text-sm font-semibold hover:underline flex items-center gap-2"><i class="fas fa-share-alt"></i> Share</button>
+          <a href="/admin/dashboard" class="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-lg">Return to Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ledger Verification Sidebar -->
+    <aside class="w-80 bg-white border-l border-gray-100 p-6 overflow-y-auto">
+      <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-link text-primary text-xs"></i> Ledger Verification</h3>
+      <div class="bg-green-50 rounded-xl p-4 mb-5">
+        <div class="flex items-center gap-2 mb-2"><i class="fas fa-check-circle text-success-green"></i><span class="text-xs font-bold text-success-green">Verified on Chain</span></div>
+        <div class="text-[10px] text-gray-500 space-y-1.5">
+          <div class="flex justify-between"><span>Transaction Hash</span><span class="font-mono text-gray-700">0x9a72...e3d4</span></div>
+          <div class="flex justify-between"><span>Block Number</span><span class="font-mono text-gray-700">#18,432,091</span></div>
+          <div class="flex justify-between"><span>Timestamp</span><span class="font-mono text-gray-700">Oct 24, 2023 14:32</span></div>
+          <div class="flex justify-between"><span>Network</span><span class="font-mono text-gray-700">Ethereum L2</span></div>
+        </div>
+      </div>
+
+      <h3 class="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-file-contract text-primary text-xs"></i> Document Integrity</h3>
+      <div class="space-y-2 mb-5">
+        <div class="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+          <div><div class="text-xs font-semibold text-gray-700">NOA Document</div><div class="text-[10px] text-gray-400 font-mono">SHA-256: 7d2e...f1a8</div></div>
+          <i class="fas fa-check-circle text-success-green"></i>
+        </div>
+        <div class="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+          <div><div class="text-xs font-semibold text-gray-700">BAC Resolution</div><div class="text-[10px] text-gray-400 font-mono">SHA-256: 3c9b...e4d7</div></div>
+          <i class="fas fa-check-circle text-success-green"></i>
+        </div>
+        <div class="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+          <div><div class="text-xs font-semibold text-gray-700">Evaluation Report</div><div class="text-[10px] text-gray-400 font-mono">SHA-256: a1f5...b2c8</div></div>
+          <i class="fas fa-check-circle text-success-green"></i>
+        </div>
+      </div>
+
+      <h3 class="text-sm font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-history text-primary text-xs"></i> Audit Trail</h3>
+      <div class="space-y-3 text-[11px]">
+        <div class="flex gap-3">
+          <div class="flex flex-col items-center"><div class="w-2 h-2 bg-success-green rounded-full mt-1"></div><div class="w-0.5 h-full bg-gray-200 mt-1"></div></div>
+          <div><div class="text-gray-700 font-semibold">NOA Generated</div><div class="text-gray-400">Oct 24, 2023 14:32</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="flex flex-col items-center"><div class="w-2 h-2 bg-success-green rounded-full mt-1"></div><div class="w-0.5 h-full bg-gray-200 mt-1"></div></div>
+          <div><div class="text-gray-700 font-semibold">Digital Signatures Applied</div><div class="text-gray-400">Oct 24, 2023 14:24</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="flex flex-col items-center"><div class="w-2 h-2 bg-success-green rounded-full mt-1"></div><div class="w-0.5 h-full bg-gray-200 mt-1"></div></div>
+          <div><div class="text-gray-700 font-semibold">Evaluation Complete</div><div class="text-gray-400">Oct 24, 2023 13:50</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="flex flex-col items-center"><div class="w-2 h-2 bg-primary rounded-full mt-1"></div></div>
+          <div><div class="text-gray-700 font-semibold">Published to Chain</div><div class="text-gray-400">Oct 24, 2023 14:32</div></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

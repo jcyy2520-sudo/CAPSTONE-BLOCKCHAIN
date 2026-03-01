@@ -1,0 +1,135 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2"><div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div><span class="text-lg font-bold text-gray-900">ProcureChain</span></div>
+    <div class="flex items-center gap-3">
+      <button class="w-8 h-8 text-gray-400 hover:text-gray-600"><i class="fas fa-bell"></i></button>
+      <button class="w-8 h-8 text-gray-400 hover:text-gray-600"><i class="fas fa-shield-halved"></i></button>
+      <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><i class="fas fa-user text-primary text-sm"></i></div>
+    </div>
+  </header>
+
+  <main class="flex-1 px-8 py-8 max-w-5xl mx-auto w-full">
+    <!-- Project Info -->
+    <div class="bg-white rounded-xl card-shadow p-6 mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <div>
+          <span class="inline-block px-2.5 py-1 bg-green-50 text-success-green text-[10px] font-bold uppercase tracking-wider rounded-full mb-2">Open for Bidding</span>
+          <h1 class="text-2xl font-extrabold text-gray-900">Main St. Sewer Rehabilitation</h1>
+          <p class="text-xs text-gray-400 mt-1">Project ID: #BID-99021 • Municipal Infrastructure Dept.</p>
+        </div>
+        <button class="flex items-center gap-2 text-sm text-gray-500 font-medium hover:text-primary"><i class="fas fa-file-alt text-xs"></i> View RFP</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <div class="col-span-2 space-y-6">
+        <!-- Technical Proposal -->
+        <div>
+          <h2 class="text-base font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-file-code text-primary"></i> Technical Proposal</h2>
+          <div class="border-2 border-dashed border-blue-200 rounded-xl p-8 text-center bg-blue-50/30 hover:bg-blue-50 transition-colors cursor-pointer mb-3">
+            <i class="fas fa-cloud-upload-alt text-primary text-2xl mb-2"></i>
+            <p class="text-sm text-gray-500">Click to upload or drag and drop Technical Document</p>
+            <p class="text-[10px] text-gray-400 mt-1">PDF, DOCX up to 50MB</p>
+            <button class="mt-3 px-5 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark">Select Files</button>
+          </div>
+          <div class="flex items-center justify-between bg-white rounded-lg card-shadow p-3">
+            <div class="flex items-center gap-3"><i class="fas fa-check-circle text-success-green"></i><div><div class="text-sm font-semibold text-gray-800">Technical_Specs_Final.pdf</div><div class="text-[10px] text-gray-400">ENCRYPTED & READY</div></div></div>
+            <span class="text-xs font-bold text-success-green">12.4 MB</span>
+          </div>
+        </div>
+
+        <!-- Financial Proposal -->
+        <div>
+          <h2 class="text-base font-bold text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-coins text-primary"></i> Financial Proposal</h2>
+          <div class="border-2 border-dashed border-blue-200 rounded-xl p-6 text-center bg-blue-50/30">
+            <i class="fas fa-sync-alt text-primary text-xl mb-2 animate-spin"></i>
+            <p class="text-sm text-gray-600 font-medium">Uploading: Financial_Bid_Matrix.xlsx</p>
+            <div class="w-48 mx-auto bg-gray-200 rounded-full h-1.5 mt-3"><div class="bg-primary rounded-full h-1.5" style="width:68%"></div></div>
+            <p class="text-[10px] text-gray-400 mt-2">68% Uploaded • Remaining: 4s</p>
+          </div>
+        </div>
+
+        <!-- Blockchain Proof -->
+        <div class="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl p-6 text-white">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-link text-blue-300 text-lg"></i>
+            <div><h3 class="text-base font-bold">Blockchain Proof-of-Submission</h3></div>
+          </div>
+          <p class="text-xs text-blue-200 leading-relaxed mb-4">Upon submission, each document is cryptographically hashed (SHA-256) and time-stamped onto the municipal private ledger. This ensures total immutability, preventing any tampering after the deadline and providing an audit trail for all participants.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/10 rounded-lg p-3"><div class="text-[10px] text-green-300 font-bold uppercase tracking-wider mb-1">Hashing Status</div><div class="text-xs font-mono text-blue-100 flex items-center gap-1"><span class="w-2 h-2 bg-red-400 rounded-full"></span>0x0F05052E884c/d89042f...</div></div>
+            <div class="bg-white/10 rounded-lg p-3"><div class="text-[10px] text-green-300 font-bold uppercase tracking-wider mb-1">Time Remaining</div><div class="text-xs text-blue-100 flex items-center gap-1"><span class="w-2 h-2 bg-red-400 rounded-full"></span>2023-11-28 14:42:01 UTC</div></div>
+          </div>
+        </div>
+
+        <!-- Certification & Submit -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <label class="flex items-start gap-3">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 text-primary rounded border-gray-300">
+            <span class="text-xs text-gray-600 leading-relaxed">I hereby declare that the documents submitted are accurate, complete, and legally binding. I acknowledge that any falsification or omission may lead to immediate disqualification and legal action under the <a href="/public/transparency" class="text-primary underline">Municipal Procurement Act 2023</a>.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="space-y-6">
+        <!-- Deadline -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center mb-1">Submission Deadline</div>
+          <div class="text-2xl font-extrabold text-gray-900 text-center">Nov 24, 2023</div>
+          <div class="text-xs text-gray-400 text-center mb-3">5:00 PM EST (Local Time)</div>
+          <div class="text-[10px] text-gray-500 text-center mb-2">Closes in:</div>
+          <div class="grid grid-cols-4 gap-2 mb-3">
+            <div class="text-center p-2 border border-red-200 rounded-lg bg-red-50"><div class="text-lg font-extrabold text-red-600">03</div><div class="text-[8px] text-red-400 uppercase">Days</div></div>
+            <div class="text-center p-2 border border-red-200 rounded-lg bg-red-50"><div class="text-lg font-extrabold text-red-600">14</div><div class="text-[8px] text-red-400 uppercase">Hrs</div></div>
+            <div class="text-center p-2 border border-red-200 rounded-lg bg-red-50"><div class="text-lg font-extrabold text-red-600">22</div><div class="text-[8px] text-red-400 uppercase">Min</div></div>
+            <div class="text-center p-2 border border-red-200 rounded-lg bg-red-50"><div class="text-lg font-extrabold text-red-600">59</div><div class="text-[8px] text-red-400 uppercase">Secs</div></div>
+          </div>
+          <div class="flex items-start gap-2 bg-blue-50 rounded-lg p-3">
+            <i class="fas fa-info-circle text-primary text-xs mt-0.5"></i>
+            <p class="text-[10px] text-gray-500 leading-relaxed">Once the deadline passes, the system will automatically seal and no further modifications can be made.</p>
+          </div>
+          <p class="text-[10px] text-gray-400 text-center mt-3">Need help? <a href="/admin/dashboard" class="text-primary underline">Contact Procurement Officer</a></p>
+        </div>
+
+        <!-- Submission Checklist -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <h3 class="text-sm font-bold text-gray-900 mb-3">Submission Checklist</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2"><i class="fas fa-check-circle text-success-green text-sm"></i><span class="text-xs text-gray-700">Technical Qualifications Statement</span></div>
+            <div class="flex items-center gap-2"><i class="fas fa-check-circle text-success-green text-sm"></i><span class="text-xs text-gray-700">Previous Project Experience (3+)</span></div>
+            <div class="flex items-center gap-2"><i class="far fa-circle text-gray-300 text-sm"></i><span class="text-xs text-gray-400">Detailed Financial Matrix (XLSX)</span></div>
+            <div class="flex items-center gap-2"><i class="far fa-circle text-gray-300 text-sm"></i><span class="text-xs text-gray-400">Legal Compliance Declaration</span></div>
+          </div>
+        </div>
+
+        <!-- System Integrity -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <h3 class="text-sm font-bold text-gray-900 mb-3">System Integrity</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between"><span class="text-xs text-gray-500">Security Protocol</span><span class="text-xs font-bold text-success-green">AES-256 Valid</span></div>
+            <div class="flex justify-between"><span class="text-xs text-gray-500">Node Sync</span><span class="text-xs font-bold text-success-green">100% Active</span></div>
+            <div class="flex justify-between"><span class="text-xs text-gray-500">Encryption Layer</span><span class="text-xs font-bold text-gray-700">End-to-End</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Bar -->
+    <div class="mt-6 flex items-center gap-4">
+      <button class="flex-1 bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl btn-shadow flex items-center justify-center gap-2 text-base">
+        <i class="fas fa-paper-plane"></i> Submit Sealed Bid
+      </button>
+      <button class="px-8 py-4 border border-gray-200 text-gray-600 font-semibold rounded-xl text-base hover:bg-gray-50">Save Draft</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-t border-gray-100 bg-white text-center">
+    <p class="text-xs text-gray-400">&copy; 2023 ProcureChain Municipal Systems. Powered by Blockchain Technology for fair and transparent procurement.</p>
+  </footer>
+</body>
+</html>

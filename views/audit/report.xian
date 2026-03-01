@@ -1,0 +1,209 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Bar -->
+  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center"><i class="fas fa-shield-alt text-white text-xs"></i></div>
+      <div><span class="text-lg font-bold text-gray-900">MuniAudit</span><span class="text-xs text-gray-400 ml-2">COA Audit System</span></div>
+    </div>
+    <nav class="flex gap-6">
+      <a href="/audit/report" class="text-sm font-semibold text-indigo-600">Audit Dashboard</a>
+      <a href="/audit/report" class="text-sm text-gray-500 hover:text-gray-800">Blockchain Logs</a>
+      <a href="/audit/flags" class="text-sm text-gray-500 hover:text-gray-800">Flagged Items</a>
+      <a href="/audit/report" class="text-sm text-gray-500 hover:text-gray-800">Reports</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 bg-green-50 text-success-green text-[10px] font-bold rounded-full"><i class="fas fa-circle text-[6px]"></i> System Online</span>
+      <div class="w-9 h-9 bg-indigo-100 rounded-full flex items-center justify-center"><i class="fas fa-user text-indigo-600 text-sm"></i></div>
+    </div>
+  </header>
+
+  <main class="px-8 py-8 max-w-7xl mx-auto">
+    <!-- Title -->
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-extrabold text-gray-900">Audit Report — Road Concreting Phase 2</h1>
+        <p class="text-sm text-gray-500 mt-1">Project Ref: BAC-2023-045 &middot; Audit Period: Q3 2023</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="px-4 py-2 border border-gray-200 text-sm text-gray-600 rounded-lg hover:bg-gray-50 flex items-center gap-2"><i class="fas fa-download text-xs"></i> Export Report</button>
+        <button class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 flex items-center gap-2"><i class="fas fa-print text-xs"></i> Print Audit</button>
+      </div>
+    </div>
+
+    <!-- Metric Cards -->
+    <div class="grid grid-cols-4 gap-4 mb-8">
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="flex items-center justify-between mb-2"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Blockchain Integrity</span><div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center"><i class="fas fa-link text-success-green text-sm"></i></div></div>
+        <div class="text-3xl font-extrabold text-success-green">100%</div>
+        <div class="text-[10px] text-gray-400 mt-1">All records verified on-chain</div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="flex items-center justify-between mb-2"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Procedural Compliance</span><div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><i class="fas fa-clipboard-check text-primary text-sm"></i></div></div>
+        <div class="text-3xl font-extrabold text-primary">98%</div>
+        <div class="text-[10px] text-gray-400 mt-1">RA 9184 standard met</div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="flex items-center justify-between mb-2"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Processing Time</span><div class="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center"><i class="fas fa-clock text-orange-500 text-sm"></i></div></div>
+        <div class="text-3xl font-extrabold text-gray-900">4.2<span class="text-lg font-bold text-gray-400"> days</span></div>
+        <div class="text-[10px] text-gray-400 mt-1">Average procurement cycle</div>
+      </div>
+      <div class="bg-white rounded-xl card-shadow p-5">
+        <div class="flex items-center justify-between mb-2"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Bidder Participation</span><div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center"><i class="fas fa-users text-purple-600 text-sm"></i></div></div>
+        <div class="text-3xl font-extrabold text-gray-900">12</div>
+        <div class="text-[10px] text-gray-400 mt-1">Unique bidders participated</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6 mb-8">
+      <!-- Blockchain Ledger Timeline -->
+      <div class="col-span-2 bg-white rounded-xl card-shadow p-6">
+        <h2 class="text-base font-bold text-gray-900 mb-5 flex items-center gap-2"><i class="fas fa-cubes text-indigo-600"></i> Blockchain Ledger Verification</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success-green rounded-full ring-4 ring-green-100"></div>
+              <div class="w-0.5 flex-1 bg-gray-200"></div>
+            </div>
+            <div class="flex-1 bg-green-50 rounded-lg p-4 -mt-1">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold text-gray-900">Pre-Procurement Conference</span><span class="text-[10px] text-gray-400 font-mono">Block #18,421,003</span></div>
+              <div class="text-xs text-gray-500 mt-1">Blockchain hash verified &middot; October 1, 2023</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Hash: 0xa3f2...8c4d</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success-green rounded-full ring-4 ring-green-100"></div>
+              <div class="w-0.5 flex-1 bg-gray-200"></div>
+            </div>
+            <div class="flex-1 bg-green-50 rounded-lg p-4 -mt-1">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold text-gray-900">Bid Opening</span><span class="text-[10px] text-gray-400 font-mono">Block #18,425,102</span></div>
+              <div class="text-xs text-gray-500 mt-1">All bid envelopes sealed on-chain &middot; October 8, 2023</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Hash: 0x7b1e...d9a2</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success-green rounded-full ring-4 ring-green-100"></div>
+              <div class="w-0.5 flex-1 bg-gray-200"></div>
+            </div>
+            <div class="flex-1 bg-green-50 rounded-lg p-4 -mt-1">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold text-gray-900">Evaluation Completed</span><span class="text-[10px] text-gray-400 font-mono">Block #18,430,451</span></div>
+              <div class="text-xs text-gray-500 mt-1">Scores committed by all evaluators &middot; October 18, 2023</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Hash: 0xe5c1...7f3b</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success-green rounded-full ring-4 ring-green-100"></div>
+              <div class="w-0.5 flex-1 bg-gray-200"></div>
+            </div>
+            <div class="flex-1 bg-green-50 rounded-lg p-4 -mt-1">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold text-gray-900">Post-Qualification</span><span class="text-[10px] text-gray-400 font-mono">Block #18,431,208</span></div>
+              <div class="text-xs text-gray-500 mt-1">Winner verified compliant &middot; October 20, 2023</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Hash: 0x2d9f...a6e1</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 bg-success-green rounded-full ring-4 ring-green-100"></div>
+            </div>
+            <div class="flex-1 bg-green-50 rounded-lg p-4 -mt-1">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold text-gray-900">Notice of Award Issued</span><span class="text-[10px] text-gray-400 font-mono">Block #18,432,091</span></div>
+              <div class="text-xs text-gray-500 mt-1">NOA sealed with digital signatures &middot; October 24, 2023</div>
+              <div class="text-[10px] text-gray-400 font-mono mt-1">Hash: 0x9a72...e3d4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auditor Notes -->
+      <div class="bg-white rounded-xl card-shadow p-6">
+        <h2 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-user-shield text-indigo-600"></i> Auditor Summary</h2>
+        <div class="bg-indigo-50 rounded-lg p-4 mb-5">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-9 h-9 bg-indigo-100 rounded-full flex items-center justify-center"><i class="fas fa-user text-indigo-600 text-sm"></i></div>
+            <div><div class="text-sm font-bold text-gray-900">Maria Santos, CPA</div><div class="text-[10px] text-gray-500">COA State Auditor IV</div></div>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">This procurement project has met all procedural requirements under RA 9184. Blockchain verification confirms data integrity across all procurement milestones. No irregularities or discrepancies found. The project demonstrates full compliance with transparency standards.</p>
+        </div>
+
+        <h3 class="text-sm font-bold text-gray-900 mb-3">Key Findings</h3>
+        <div class="space-y-2">
+          <div class="flex items-start gap-2"><i class="fas fa-check-circle text-success-green text-xs mt-0.5"></i><span class="text-xs text-gray-600">All bid documents preserved on-chain without alterations</span></div>
+          <div class="flex items-start gap-2"><i class="fas fa-check-circle text-success-green text-xs mt-0.5"></i><span class="text-xs text-gray-600">Evaluation scores match blockchain committed values</span></div>
+          <div class="flex items-start gap-2"><i class="fas fa-check-circle text-success-green text-xs mt-0.5"></i><span class="text-xs text-gray-600">Timeline adherence within acceptable thresholds</span></div>
+          <div class="flex items-start gap-2"><i class="fas fa-check-circle text-success-green text-xs mt-0.5"></i><span class="text-xs text-gray-600">Bidder participation meets minimum competition standards</span></div>
+        </div>
+
+        <div class="mt-5 pt-4 border-t border-gray-100">
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-2">Audit Status</div>
+          <span class="px-3 py-1.5 bg-green-50 text-success-green text-xs font-bold rounded-full"><i class="fas fa-check-circle text-[10px]"></i> Clean — No Findings</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Integrity Verification -->
+    <div class="bg-white rounded-xl card-shadow p-6">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-fingerprint text-indigo-600"></i> Document Integrity Verification</h2>
+        <span class="text-xs text-gray-400">All hashes verified against blockchain records</span>
+      </div>
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-100">
+          <th class="text-left pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Document</th>
+          <th class="text-left pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Original Hash (DB)</th>
+          <th class="text-left pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Live Hash (Blockchain)</th>
+          <th class="text-center pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Match</th>
+          <th class="text-center pb-3 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Status</th>
+        </tr></thead>
+        <tbody>
+          <tr class="border-b border-gray-50">
+            <td class="py-3 font-semibold text-gray-700">Invitation to Bid</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0xa3f2e8...7d4c</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0xa3f2e8...7d4c</td>
+            <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+            <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Verified</span></td>
+          </tr>
+          <tr class="border-b border-gray-50">
+            <td class="py-3 font-semibold text-gray-700">Bid Envelope (BuildRight)</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x7b1ee2...a9f1</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x7b1ee2...a9f1</td>
+            <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+            <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Verified</span></td>
+          </tr>
+          <tr class="border-b border-gray-50">
+            <td class="py-3 font-semibold text-gray-700">Evaluation Matrix</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0xe5c13a...f3b2</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0xe5c13a...f3b2</td>
+            <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+            <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Verified</span></td>
+          </tr>
+          <tr class="border-b border-gray-50">
+            <td class="py-3 font-semibold text-gray-700">BAC Resolution</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x2d9f41...e6a4</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x2d9f41...e6a4</td>
+            <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+            <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Verified</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 font-semibold text-gray-700">Notice of Award</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x9a72b5...d3e4</td>
+            <td class="py-3 font-mono text-xs text-gray-500">0x9a72b5...d3e4</td>
+            <td class="py-3 text-center"><i class="fas fa-check-circle text-success-green"></i></td>
+            <td class="py-3 text-center"><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Verified</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="py-4 border-t border-gray-100 bg-white mt-8">
+    <div class="max-w-7xl mx-auto px-8 flex items-center justify-between">
+      <div class="flex items-center gap-2"><div class="w-5 h-5 bg-indigo-100 rounded flex items-center justify-center"><i class="fas fa-shield-alt text-indigo-600 text-[8px]"></i></div><span class="text-xs text-gray-400">MuniAudit COA System V1.2.0</span></div>
+      <span class="text-xs text-gray-400">Blockchain-Verified Audit Trail — Node #44281-COA</span>
+    </div>
+  </footer>
+</body>
+</html>

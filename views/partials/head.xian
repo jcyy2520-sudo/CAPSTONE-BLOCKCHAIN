@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a73e8',
+            'primary-dark': '#1557b0',
+            'primary-light': '#e8f0fe',
+            'success-green': '#34a853',
+            'status-pending': '#ea8600',
+            'status-uploaded': '#34a853',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 50%, #f0f7ff 100%); }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .btn-shadow { box-shadow: 0 2px 8px rgba(26,115,232,0.3); }
+  </style>
+  <title>{{ title }}</title>
+</head>

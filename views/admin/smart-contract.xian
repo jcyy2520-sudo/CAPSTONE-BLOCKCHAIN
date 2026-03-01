@@ -1,0 +1,188 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gray-900 px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center"><i class="fas fa-microchip text-white text-xs"></i></div>
+      <div class="leading-tight">
+        <div class="text-sm font-bold text-white">BAC Admin Console</div>
+        <div class="text-[10px] text-gray-400">Secure Blockchain Procurement System</div>
+      </div>
+    </div>
+    <nav class="flex items-center gap-6">
+      <a href="/admin/dashboard" class="text-sm text-gray-400 hover:text-white">Dashboard</a>
+      <a href="/admin/smart-contract" class="text-sm text-white font-semibold border-b-2 border-yellow-500 pb-0.5">Smart Contracts</a>
+      <a href="/admin/bid-evaluation" class="text-sm text-gray-400 hover:text-white">Bid Management</a>
+      <a href="/admin/bid-evaluation" class="text-sm text-gray-400 hover:text-white">Suppliers</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span class="px-3 py-1.5 bg-green-500/20 text-green-400 text-[10px] font-bold rounded-full flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>Mainnet Connected</span>
+      <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold">A</div>
+    </div>
+  </header>
+
+  <main class="flex-1 px-8 py-6 max-w-7xl mx-auto w-full">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-extrabold text-gray-900">Smart Contract Rule Configuration</h1>
+        <p class="text-sm text-gray-400 italic mt-1">Define the immutable parameters for the procurement project before deployment.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="px-4 py-2 border border-gray-200 text-sm font-semibold text-gray-600 rounded-lg hover:bg-gray-50">Save Draft</button>
+        <button class="px-4 py-2 border border-gray-200 text-sm font-semibold text-gray-600 rounded-lg hover:bg-gray-50 flex items-center gap-2"><i class="fas fa-file-import text-xs"></i> Load Template</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5 gap-6">
+      <!-- Left Main Column -->
+      <div class="col-span-3 space-y-6">
+        <!-- 1. Project Identification -->
+        <div class="bg-white rounded-xl card-shadow p-6">
+          <div class="flex items-center gap-3 mb-5"><div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><i class="fas fa-folder text-primary text-sm"></i></div><h2 class="text-base font-bold text-gray-900">1. Project Identification</h2></div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Project Title</label>
+            <input type="text" placeholder="e.g. Construction of Multi-Purpose Hall Phase II" class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Project Reference ID</label>
+              <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">#</span><input type="text" value="BAC-INFRA-2023-009" class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></div>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Approved Budget for the Contract (ABC)</label>
+              <div class="relative"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">₱</span><input type="text" value="0.00" class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg text-sm text-right focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Smart Contract Rules -->
+        <div class="bg-white rounded-xl card-shadow p-6">
+          <div class="flex items-center gap-3 mb-5"><div class="w-8 h-8 bg-yellow-50 rounded-lg flex items-center justify-center"><i class="fas fa-cog text-yellow-500 text-sm"></i></div><h2 class="text-base font-bold text-gray-900">2. Smart Contract Rules</h2></div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Submission Deadline (Blockchain Time-lock) <i class="fas fa-info-circle text-gray-300 text-[10px]"></i></label>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="relative"><input type="text" placeholder="mm/dd/yyyy" class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"><i class="fas fa-calendar absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 text-sm"></i></div>
+              <div class="relative"><input type="text" placeholder="--:-- --" class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"><i class="fas fa-clock absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 text-sm"></i></div>
+            </div>
+            <p class="text-[10px] text-yellow-600 mt-2 flex items-center gap-1"><i class="fas fa-exclamation-triangle text-[8px]"></i> Warning: This deadline cannot be extended once deployed to the blockchain.</p>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Mandatory Technical Documents</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300"><span class="text-sm text-gray-700">PhilGEPS Registration</span></label>
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300"><span class="text-sm text-gray-700">Mayor's Permit</span></label>
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300"><span class="text-sm text-gray-700">Income Tax Return</span></label>
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300"><span class="text-sm text-gray-700">Omnibus Sworn Statement</span></label>
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"><span class="text-sm text-gray-700">PCAB License (Infra)</span></label>
+              <label class="flex items-center gap-2 px-3 py-2.5 border border-gray-200 rounded-lg"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"><span class="text-sm text-gray-700">Net Financial Contracting Capacity</span></label>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Financial Bid Format</label>
+            <div class="flex items-center gap-6">
+              <label class="flex items-center gap-2"><input type="radio" name="bid_format" checked class="w-4 h-4 text-primary border-gray-300"><span class="text-sm text-gray-700">Single Currency (PHP)</span></label>
+              <label class="flex items-center gap-2"><input type="radio" name="bid_format" class="w-4 h-4 text-primary border-gray-300"><span class="text-sm text-gray-700">Multi-Currency</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Governance Parameters -->
+        <div class="bg-white rounded-xl card-shadow p-6">
+          <div class="flex items-center gap-3 mb-5"><div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center"><i class="fas fa-landmark text-primary text-sm"></i></div><h2 class="text-base font-bold text-gray-900">3. Governance Parameters</h2></div>
+          <div class="grid grid-cols-2 gap-6 mb-5">
+            <div>
+              <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Minimum Number of Bidders</label>
+              <p class="text-[10px] text-gray-400 mb-2">Required number of valid bids to proceed to opening.</p>
+              <select class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white appearance-none">
+                <option>3 (Competitive Bidding)</option>
+                <option>1 (Direct Contracting)</option>
+                <option>2 (Limited Source)</option>
+              </select>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1"><label class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Automated Compliance Check</label><span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">Recommended</span></div>
+              <p class="text-[10px] text-gray-400 mb-2">Smart contract will auto-verify digital signatures of submitted docs.</p>
+              <div class="flex items-center gap-2"><div class="w-11 h-6 bg-primary rounded-full relative cursor-pointer"><div class="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5 shadow"></div></div><span class="text-sm text-gray-700">Enabled</span></div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-3">Observer Access Rights</label>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between py-3 border-b border-gray-50">
+                <div class="flex items-center gap-3"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-eye text-gray-400 text-xs"></i></div><div><div class="text-sm font-medium text-gray-700">Commission on Audit (COA)</div><div class="text-[10px] text-gray-400">Full read access to all encrypted bids after opening</div></div></div>
+                <input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300">
+              </div>
+              <div class="flex items-center justify-between py-3">
+                <div class="flex items-center gap-3"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-users text-gray-400 text-xs"></i></div><div><div class="text-sm font-medium text-gray-700">NGO Observers</div><div class="text-[10px] text-gray-400">Access to procedural logs and summary data</div></div></div>
+                <input type="checkbox" checked class="w-4 h-4 text-primary rounded border-gray-300">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar: Smart Contract Preview -->
+      <div class="col-span-2">
+        <div class="bg-gray-900 rounded-xl overflow-hidden sticky top-6">
+          <div class="flex items-center justify-between px-5 py-3 border-b border-gray-700">
+            <div class="flex items-center gap-2"><i class="fas fa-code text-yellow-500 text-sm"></i><span class="text-sm font-bold text-white">Smart Contract Logic Preview</span></div>
+            <span class="text-[10px] text-gray-400 font-mono">Solidity 0.8.28</span>
+          </div>
+          <div class="p-5 font-mono text-xs leading-relaxed overflow-x-auto" style="max-height: 480px;">
+            <div class="text-gray-500">// SPDX-License-Identifier: MIT</div>
+            <div><span class="text-purple-400">pragma</span> <span class="text-blue-400">solidity</span> ^0.8.28;</div>
+            <div class="mt-2"><span class="text-purple-400">contract</span> <span class="text-green-400">PublicBidding</span> {</div>
+            <div class="pl-4 mt-1"><span class="text-blue-400">bytes32</span> <span class="text-purple-300">public</span> projectId = <span class="text-yellow-300">"BAC-INFRA-20..."</span>;</div>
+            <div class="pl-4"><span class="text-blue-400">uint256</span> <span class="text-purple-300">public</span> abc = <span class="text-yellow-300">450000000000000000</span>;</div>
+            <div class="pl-4 mt-2"><span class="text-purple-400">struct</span> <span class="text-green-400">BiddingRules</span> {</div>
+            <div class="pl-8"><span class="text-blue-400">uint256</span> deadline;</div>
+            <div class="pl-8"><span class="text-blue-400">uint8</span> minBidders;</div>
+            <div class="pl-8"><span class="text-blue-400">bool</span> autoVerify;</div>
+            <div class="pl-4">}</div>
+            <div class="pl-4 mt-2"><span class="text-green-400">BiddingRules</span> <span class="text-purple-300">public</span> rules;</div>
+            <div class="pl-4 mt-2"><span class="text-purple-400">constructor</span>() {</div>
+            <div class="pl-8">rules.deadline = <span class="text-yellow-300">1700467200</span>; <span class="text-gray-500">// Nov 29, 2023</span></div>
+            <div class="pl-8">rules.minBidders = <span class="text-yellow-300">3</span>;</div>
+            <div class="pl-8">rules.autoVerify = <span class="text-purple-300">true</span>;</div>
+            <div class="pl-4">}</div>
+            <div class="pl-4 mt-2"><span class="text-purple-400">modifier</span> <span class="text-green-400">onlyBeforeDeadline</span> {</div>
+            <div class="pl-8"><span class="text-purple-400">require</span>(</div>
+            <div class="pl-12">block.timestamp &lt; rules.deadline, <span class="text-yellow-300">"Su..."</span></div>
+            <div class="pl-8">);</div>
+            <div class="pl-4">}</div>
+            <div>}</div>
+          </div>
+          <div class="px-5 py-3 border-t border-gray-700 flex items-center justify-between">
+            <span class="text-[10px] text-gray-400">Contract Hash: Pending</span>
+            <span class="text-[10px] text-red-400 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>Compiled</span>
+          </div>
+        </div>
+
+        <!-- Deployment Summary -->
+        <div class="bg-white rounded-xl card-shadow p-5 mt-6">
+          <h3 class="text-sm font-bold text-gray-900 mb-4">Deployment Summary</h3>
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between"><span class="text-xs text-primary">Network</span><span class="text-xs font-semibold text-gray-700">Private Ethereum Sidechain</span></div>
+            <div class="flex justify-between"><span class="text-xs text-primary">Gas Fee Est.</span><span class="text-xs font-semibold text-gray-700">0.0045 ETH</span></div>
+            <div class="flex justify-between"><span class="text-xs text-primary">Est. Block Time</span><span class="text-xs font-semibold text-gray-700">~2.5s</span></div>
+          </div>
+          <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-4">
+            <div class="flex items-start gap-2"><span class="w-2 h-2 bg-success-green rounded-full mt-1"></span><p class="text-[10px] text-gray-600 leading-relaxed">Once deployed, these parameters become immutable. A new contract must be created to change rules.</p></div>
+          </div>
+          <button class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm mb-3"><i class="fas fa-rocket text-xs"></i> DEPLOY TO MAINNET</button>
+          <button class="w-full border border-gray-200 text-gray-600 font-semibold py-3 rounded-lg text-sm hover:bg-gray-50">Simulate on Testnet</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-t border-gray-100 bg-white">
+    <div class="max-w-7xl mx-auto px-8 flex items-center justify-between">
+      <div class="flex items-center gap-2"><i class="fas fa-check-circle text-success-green text-sm"></i><span class="text-xs text-gray-500">Secured by Municipal Blockchain Network</span></div>
+      <span class="text-xs text-gray-400">&copy; 2023 City Government. Authorized Personnel Only.</span>
+    </div>
+  </footer>
+</body>
+</html>

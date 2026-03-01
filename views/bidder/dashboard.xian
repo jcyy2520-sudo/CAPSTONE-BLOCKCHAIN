@@ -1,0 +1,173 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 z-30">
+    <div class="p-5 border-b border-gray-100">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div>
+        <span class="text-base font-bold text-primary">ProcureChain</span>
+      </div>
+    </div>
+    <div class="p-3 mb-1">
+      <div class="relative">
+        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 text-xs"></i>
+        <input type="text" placeholder="Search tenders, projects, or documents..." class="w-full pl-8 pr-3 py-2 border border-gray-200 rounded-lg text-[11px] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+      </div>
+    </div>
+    <nav class="flex-1 p-3 space-y-1">
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold">
+        <i class="fas fa-th-large text-xs w-4"></i> Dashboard
+      </a>
+      <a href="/bidder/submission" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-gavel text-xs w-4"></i> My Bids
+      </a>
+      <a href="/bidder/submission" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-file-alt text-xs w-4"></i> Documents
+      </a>
+      <a href="/bidder/bid-submit" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-envelope text-xs w-4"></i> Invitations to Bid
+      </a>
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-cog text-xs w-4"></i> Settings
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 ml-56">
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-gray-100 px-8 py-3 flex items-center justify-end gap-4">
+      <button class="relative w-8 h-8 text-gray-400 hover:text-gray-600"><i class="fas fa-bell text-sm"></i></button>
+      <div class="flex items-center gap-3">
+        <div class="leading-tight text-right">
+          <div class="text-sm font-semibold text-gray-800">Alex Thompson</div>
+          <div class="text-[10px] text-gray-400">Procurement Officer</div>
+        </div>
+        <div class="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center"><i class="fas fa-user text-primary text-sm"></i></div>
+      </div>
+    </header>
+
+    <div class="p-8">
+      <!-- Welcome -->
+      <div class="mb-6">
+        <h1 class="text-2xl font-extrabold text-gray-900">Welcome back, City Builders Inc.</h1>
+        <p class="text-sm text-gray-400 mt-1">Your municipal procurement overview for October 24, 2024.</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="flex items-center justify-between mb-2">
+            <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-file-alt text-primary text-lg"></i></div>
+            <span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">+2 new</span>
+          </div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Active Bids</div>
+          <div class="text-2xl font-extrabold text-gray-900">12</div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center mb-2"><i class="fas fa-check-square text-success-green text-lg"></i></div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Won Contracts</div>
+          <div class="text-2xl font-extrabold text-gray-900">48</div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center mb-2"><i class="fas fa-clipboard-list text-orange-500 text-lg"></i></div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Pending Reviews</div>
+          <div class="text-2xl font-extrabold text-gray-900">3</div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-2"><i class="fas fa-chart-line text-primary text-lg"></i></div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Reputation Score</div>
+          <div class="text-2xl font-extrabold text-gray-900">99.8%</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-6">
+        <!-- Recent Bid Activity -->
+        <div class="col-span-2 bg-white rounded-xl card-shadow p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-bold text-gray-900">Recent Bid Activity</h2>
+            <a href="/bidder/submission" class="text-xs text-primary font-semibold hover:underline">View All</a>
+          </div>
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-gray-100">
+              <th class="text-left pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Project / ID</th>
+              <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+              <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Time</th>
+              <th class="text-center pb-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">TX Hash</th>
+            </tr></thead>
+            <tbody>
+              <tr class="border-b border-gray-50">
+                <td class="py-3"><div class="font-semibold text-gray-900">Main St. Sewer Rehab</div><div class="text-[10px] text-gray-400">#BID-99021</div></td>
+                <td class="py-3 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full"><span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>Submitted</span></td>
+                <td class="py-3 text-center text-xs text-gray-400">2h ago</td>
+                <td class="py-3 text-center"><span class="text-xs font-mono text-primary">0x88f...3a1</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="py-3"><div class="font-semibold text-gray-900">Public Park Lighting</div><div class="text-[10px] text-gray-400">#BID-87422</div></td>
+                <td class="py-3 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-50 text-yellow-600 text-[10px] font-bold rounded-full"><span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>Evaluated</span></td>
+                <td class="py-3 text-center text-xs text-gray-400">Oct 22</td>
+                <td class="py-3 text-center"><span class="text-xs font-mono text-primary">0x34a...9b4</span></td>
+              </tr>
+              <tr>
+                <td class="py-3"><div class="font-semibold text-gray-900">City Hall HVAC Repair</div><div class="text-[10px] text-gray-400">#BID-77312</div></td>
+                <td class="py-3 text-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>Draft</span></td>
+                <td class="py-3 text-center text-xs text-gray-400">Oct 21</td>
+                <td class="py-3 text-center text-xs text-gray-300">Pending upload</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Compliance Status -->
+        <div class="bg-white rounded-xl card-shadow p-5">
+          <h2 class="text-base font-bold text-gray-900 mb-4">Compliance Status</h2>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-success-green text-lg"></i><div><div class="text-sm font-semibold text-gray-800">Business Permit</div><div class="text-[10px] text-gray-400">Expires Dec 2024</div></div></div>
+              <span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">VALID</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3"><i class="fas fa-exclamation-circle text-yellow-500 text-lg"></i><div><div class="text-sm font-semibold text-gray-800">Tax Clearance</div><div class="text-[10px] text-gray-400">Expires in 12 days</div></div></div>
+              <span class="px-2 py-0.5 bg-red-50 text-red-500 text-[10px] font-bold rounded-full">EXPIRING SOON</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-success-green text-lg"></i><div><div class="text-sm font-semibold text-gray-800">ISO Certificate</div><div class="text-[10px] text-gray-400">Verified by Oracle</div></div></div>
+              <span class="px-2 py-0.5 bg-green-50 text-success-green text-[10px] font-bold rounded-full">VALID</span>
+            </div>
+          </div>
+          <button class="w-full mt-5 py-2.5 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-blue-50">Manage All Documents</button>
+        </div>
+      </div>
+
+      <!-- Recommended Invitations -->
+      <div class="mt-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base font-bold text-gray-900">Recommended Invitations</h2>
+          <div class="flex gap-2"><button class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-50"><i class="fas fa-chevron-left text-xs text-gray-400"></i></button><button class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-50"><i class="fas fa-chevron-right text-xs text-gray-400"></i></button></div>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl card-shadow overflow-hidden">
+            <div class="h-32 bg-gradient-to-br from-blue-100 to-blue-200 relative flex items-center justify-center"><i class="fas fa-building text-blue-300 text-4xl"></i><span class="absolute top-2 right-2 px-2 py-0.5 bg-green-500 text-white text-[10px] font-bold rounded-full">NEW</span></div>
+            <div class="p-4"><div class="text-sm font-bold text-gray-900">Office Building Renovation</div><div class="text-[10px] text-gray-400 mt-1">Municipality of San Isidro</div></div>
+          </div>
+          <div class="bg-white rounded-xl card-shadow overflow-hidden">
+            <div class="h-32 bg-gradient-to-br from-gray-100 to-gray-200 relative flex items-center justify-center"><i class="fas fa-road text-gray-300 text-4xl"></i><span class="absolute top-2 right-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">URGENT</span></div>
+            <div class="p-4"><div class="text-sm font-bold text-gray-900">Highway Bridge Repair</div><div class="text-[10px] text-gray-400 mt-1">Provincial Engineering Office</div></div>
+          </div>
+          <div class="bg-white rounded-xl card-shadow overflow-hidden">
+            <div class="h-32 bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center"><i class="fas fa-school text-yellow-300 text-4xl"></i></div>
+            <div class="p-4"><div class="text-sm font-bold text-gray-900">School Facility Upgrade</div><div class="text-[10px] text-gray-400 mt-1">DepEd Central Office</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Verified Badge -->
+  <div class="fixed bottom-6 left-6 z-40 bg-primary text-white rounded-xl px-4 py-3 flex items-center gap-3 card-shadow">
+    <i class="fas fa-check-circle text-lg"></i>
+    <div><div class="text-[10px] font-bold uppercase tracking-wider">Verified Bidder</div><div class="text-xs font-semibold">City Builders Inc.</div></div>
+  </div>
+</body>
+</html>
