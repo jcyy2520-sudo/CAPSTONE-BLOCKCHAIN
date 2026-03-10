@@ -9,23 +9,7 @@
       </div>
       <span class="text-base font-bold text-gray-900">Blockchain Procurement</span>
     </div>
-    <div class="flex items-center gap-3">
-      <button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
-        <i class="fas fa-bell text-gray-400 text-sm"></i>
-      </button>
-      <button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
-        <i class="fas fa-question-circle text-gray-400 text-sm"></i>
-      </button>
-      <div class="flex items-center gap-2 ml-2">
-        <div class="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center">
-          <i class="fas fa-user text-orange-400 text-sm"></i>
-        </div>
-        <div class="leading-tight">
-          <div class="text-sm font-semibold text-gray-800">BAC Admin</div>
-          <div class="text-[10px] text-gray-400">Dan Isidro</div>
-        </div>
-      </div>
-    </div>
+
   </header>
 
   <!-- Main Content -->
@@ -59,93 +43,86 @@
         </p>
       </div>
 
-      <!-- Document Cards -->
-      <div class="space-y-4 mb-6">
-
-        <!-- Business Permit -->
-        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <i class="fas fa-file-alt text-primary text-lg"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-gray-900">Business Permit (Mayor's Permit)</span>
-                <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
+      <form action="/register/step3" method="POST" enctype="multipart/form-data">
+        <div class="space-y-4 mb-6">
+          <!-- Business Permit -->
+          <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                <i class="fas fa-file-alt text-primary text-lg"></i>
               </div>
-              <p class="text-xs text-gray-400 mt-0.5">Valid for the current fiscal year. PDF, JPG, PNG (Max 5MB)</p>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-bold text-gray-900">Business Permit (Mayor's Permit)</span>
+                  <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-0.5">Valid for the current fiscal year. PDF, JPG, PNG (Max 5MB)</p>
+                <input type="file" name="business_permit" accept=".pdf,.jpg,.png" required class="mt-2">
+              </div>
             </div>
           </div>
-          <button class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-5 rounded-lg text-xs transition-all">
-            <i class="fas fa-upload text-xs"></i>
-            UPLOAD
+          <!-- Tax Clearance Certificate -->
+          <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
+                <i class="fas fa-file-circle-check text-success-green text-lg"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-bold text-gray-900">Tax Clearance Certificate</span>
+                  <span class="text-[10px] font-bold text-success-green uppercase tracking-wider">Uploaded</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-0.5">Issued by the Bureau of Internal Revenue. PDF, JPG, PNG (Max 5MB)</p>
+                <input type="file" name="tax_clearance" accept=".pdf,.jpg,.png" required class="mt-2">
+              </div>
+            </div>
+          </div>
+          <!-- PhilGEPS Certificate -->
+          <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                <i class="fas fa-certificate text-primary text-lg"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-bold text-gray-900">PhilGEPS Certificate</span>
+                  <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-0.5">Platinum membership certificate. PDF preferred (Max 10MB)</p>
+                <input type="file" name="philgeps_cert" accept=".pdf,.jpg,.png" required class="mt-2">
+              </div>
+            </div>
+          </div>
+          <!-- Audited Financial Statements -->
+          <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                <i class="fas fa-chart-line text-primary text-lg"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-bold text-gray-900">Audited Financial Statements</span>
+                  <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-0.5">Latest audited financial statements. PDF, JPG, PNG (Max 10MB)</p>
+                <input type="file" name="financial_statements" accept=".pdf,.jpg,.png" required class="mt-2">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-8">
+          <a href="/register/step2"
+            class="inline-flex items-center gap-2 text-sm text-gray-600 font-medium bg-white border border-gray-200 rounded-lg px-6 py-3 hover:bg-gray-50 transition-all">
+            <i class="fas fa-arrow-left text-xs"></i>
+            Previous Step
+          </a>
+          <button type="submit"
+            class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg btn-shadow transition-all text-sm">
+            Complete Registration
+            <i class="fas fa-check text-xs"></i>
           </button>
         </div>
 
-        <!-- Tax Clearance Certificate -->
-        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
-              <i class="fas fa-file-circle-check text-success-green text-lg"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-gray-900">Tax Clearance Certificate</span>
-                <span class="text-[10px] font-bold text-success-green uppercase tracking-wider">Uploaded</span>
-              </div>
-              <p class="text-xs text-gray-400 mt-0.5">Issued by the Bureau of Internal Revenue. <span class="text-primary underline cursor-pointer">tax_clearance_2024.pdf</span></p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2">
-            <button class="w-8 h-8 rounded-full flex items-center justify-center border border-gray-200 hover:bg-gray-50 transition-colors">
-              <i class="fas fa-eye text-gray-400 text-sm"></i>
-            </button>
-            <button class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 font-semibold py-2 px-5 rounded-lg text-xs hover:bg-gray-50 transition-all">
-              REPLACE
-            </button>
-          </div>
-        </div>
-
-        <!-- PhilGEPS Certificate -->
-        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <i class="fas fa-certificate text-primary text-lg"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-gray-900">PhilGEPS Certificate</span>
-                <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
-              </div>
-              <p class="text-xs text-gray-400 mt-0.5">Platinum membership certificate. PDF preferred (Max 10MB)</p>
-            </div>
-          </div>
-          <button class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-5 rounded-lg text-xs transition-all">
-            <i class="fas fa-upload text-xs"></i>
-            UPLOAD
-          </button>
-        </div>
-
-        <!-- Audited Financial Statements -->
-        <div class="bg-white rounded-xl card-shadow p-5 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <i class="fas fa-chart-line text-primary text-lg"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-gray-900">Audited Financial Statements</span>
-                <span class="text-[10px] font-bold text-status-pending uppercase tracking-wider">Pending</span>
-              </div>
-              <p class="text-xs text-gray-400 mt-0.5">Showing the entity's total and current assets/liabilities</p>
-            </div>
-          </div>
-          <button class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-5 rounded-lg text-xs transition-all">
-            <i class="fas fa-upload text-xs"></i>
-            UPLOAD
-          </button>
-        </div>
-      </div>
 
       <!-- Blockchain Verification Notice -->
       <div class="bg-green-50 border border-green-100 rounded-2xl p-5 mb-8 flex items-start gap-3">
@@ -158,25 +135,6 @@
             Your files are processed locally to generate SHA-256 hashes. These hashes serve as a digital fingerprint, ensuring your documents cannot be altered or
             revoked once submitted.
           </p>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="flex items-center justify-between mb-8">
-        <a href="/register/step2"
-          class="inline-flex items-center gap-2 text-sm text-gray-600 font-medium bg-white border border-gray-200 rounded-lg px-6 py-3 hover:bg-gray-50 transition-all">
-          <i class="fas fa-arrow-left text-xs"></i>
-          Previous Step
-        </a>
-        <div class="flex items-center gap-3">
-          <button class="text-sm text-gray-400 font-medium hover:text-gray-600 transition-colors px-4 py-3">
-            Save Draft
-          </button>
-          <a href="/register/success"
-            class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg btn-shadow transition-all text-sm uppercase tracking-wider">
-            Finalize Registration
-            <i class="fas fa-check-circle text-xs"></i>
-          </a>
         </div>
       </div>
     </div>

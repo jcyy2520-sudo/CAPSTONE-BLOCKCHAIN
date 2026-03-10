@@ -26,7 +26,26 @@
     
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("capstone", "root", "", {
-  host: "localhost",
-  dialect: "mysql"
+const DB_NAME = process.env.DB_NAME || "capstone";
+const DB_USER = process.env.DB_USER || "root";
+const DB_PASS = process.env.DB_PASS || "";
+const DB_HOST = process.env.DB_HOST || "localhost";
+const DB_PORT = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 3306;
+
+export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+  host: DB_HOST,
+  port: DB_PORT,
+  dialect: "mysql",
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
+
+// Attempt initial authentication and log a helpful message if it fails.
+sequelize.authenticate()
+  .then(() => console.log("✅ Database connection established."))
+  .catch(err => console.error("❌ Unable to connect to the database:", err.message));

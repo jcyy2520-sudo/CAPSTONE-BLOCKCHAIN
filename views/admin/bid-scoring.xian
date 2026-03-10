@@ -1,7 +1,9 @@
 {{> head }}
-<body class="bg-gray-500/50 min-h-screen flex items-center justify-center p-8">
+<body class="bg-gray-50 min-h-screen flex">
+  <!-- Sidebar -->
+  {{> sidebar }}
   <!-- Modal -->
-  <div class="bg-white rounded-2xl card-shadow max-w-xl w-full">
+  <div class="bg-white rounded-2xl card-shadow max-w-xl w-full ml-56">
     <!-- Header -->
     <div class="flex items-center justify-between p-6 border-b border-gray-100">
       <div>

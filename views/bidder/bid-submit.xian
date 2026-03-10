@@ -1,17 +1,52 @@
 {{> head }}
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="bg-gray-50 min-h-screen flex">
 
-  <!-- Header -->
-  <header class="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-2"><div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div><span class="text-lg font-bold text-gray-900">ProcureChain</span></div>
-    <div class="flex items-center gap-3">
-      <button class="w-8 h-8 text-gray-400 hover:text-gray-600"><i class="fas fa-bell"></i></button>
-      <button class="w-8 h-8 text-gray-400 hover:text-gray-600"><i class="fas fa-shield-halved"></i></button>
-      <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center"><i class="fas fa-user text-primary text-sm"></i></div>
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 z-30">
+    <div class="p-5 border-b border-gray-100">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+          <i class="fas fa-user text-gray-400 text-sm"></i>
+        </div>
+        <div class="leading-tight">
+          <div class="text-sm font-bold text-gray-900">City Builders Inc.</div>
+          <div class="flex items-center gap-1 text-[10px] text-success-green"><i class="fas fa-check-circle text-[8px]"></i> Verified</div>
+        </div>
+      </div>
     </div>
-  </header>
+    <nav class="flex-1 p-3 space-y-1">
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-th-large text-xs w-4"></i> Dashboard
+      </a>
+      <a href="/bidder/bid-submit" class="flex items-center gap-3 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold">
+        <i class="fas fa-folder-open text-xs w-4"></i> Open Tenders
+      </a>
+      <a href="/bidder/submission" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-paper-plane text-xs w-4"></i> My Submissions
+      </a>
+      <a href="/bidder/submission" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-chart-line text-xs w-4"></i> Bid Status
+      </a>
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-user-circle text-xs w-4"></i> Profile
+      </a>
+    </nav>
+    <div class="p-3 border-t border-gray-100">
+      <div class="bg-blue-900 rounded-xl p-4 mb-3">
+        <div class="flex items-center gap-2 mb-1">
+          <i class="fas fa-lock text-blue-300 text-xs"></i>
+          <span class="text-[10px] font-bold text-white uppercase tracking-wider">Secure Mode</span>
+        </div>
+        <p class="text-[10px] text-blue-200 leading-relaxed">All submissions are encrypted and sealed on the blockchain.</p>
+      </div>
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-headset text-xs w-4"></i> Support
+      </a>
+    </div>
+  </aside>
 
-  <main class="flex-1 px-8 py-8 max-w-5xl mx-auto w-full">
+  <!-- Main Content -->
+  <main class="flex-1 ml-56 px-8 py-8 max-w-5xl">
     <!-- Project Info -->
     <div class="bg-white rounded-xl card-shadow p-6 mb-6">
       <div class="flex items-center justify-between mb-2">
@@ -126,10 +161,5 @@
       <button class="px-8 py-4 border border-gray-200 text-gray-600 font-semibold rounded-xl text-base hover:bg-gray-50">Save Draft</button>
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="py-4 border-t border-gray-100 bg-white text-center">
-    <p class="text-xs text-gray-400">&copy; 2023 ProcureChain Municipal Systems. Powered by Blockchain Technology for fair and transparent procurement.</p>
-  </footer>
 </body>
 </html>

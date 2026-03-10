@@ -26,7 +26,8 @@
     
 import express from "express";
 import { homePage } from "../controllers/homeController.js";
-import { loginPage, registerStep1, registerStep2, registerStep3, registerSuccess } from "../controllers/authController.js";
+import multer from "multer";
+import { loginPage, loginPost, logout, registerStep1, registerStep2, registerStep3, registerSuccess, registerStep1Post, registerStep2Post, registerStep3Post } from "../controllers/authController.js";
 import {
   adminDashboard, adminDashboardRisk, noaGeneration, noaIssued,
   smartContract, verificationCertificate, bidEvaluation, bidScoring,
@@ -36,14 +37,37 @@ import {
 } from "../controllers/pageController.js";
 
 const router = express.Router();
-router.get("/", homePage);
+router.get("/", loginPage);
 
 // Auth routes
 router.get("/login", loginPage);
+router.post("/login", loginPost);
+router.get("/logout", logout);
 router.get("/register", registerStep1);
+router.post("/register", registerStep1Post);
 router.get("/register/step2", registerStep2);
+router.post("/register/step2", registerStep2Post);
 router.get("/register/step3", registerStep3);
+const upload = multer({ dest: "uploads/" });
+router.post("/register/step3", upload.fields([
+  { name: "business_permit", maxCount: 1 },
+  { name: "tax_clearance", maxCount: 1 },
+  { name: "philgeps_cert", maxCount: 1 },
+  { name: "financial_statements", maxCount: 1 }
+]), registerStep3Post);
 router.get("/register/success", registerSuccess);
+
+// Admin registration review routes
+function ensureAdmin(req, res, next) {
+  if (req.session && req.session.user && req.session.user.role === 'admin') return next();
+  req.flash('error_msg', 'Administrator access required');
+  return res.redirect('/login');
+}
+
+import { adminListRegistrations, adminApproveRegistration, adminRejectRegistration } from "../controllers/authController.js";
+router.get('/admin/registrations', ensureAdmin, adminListRegistrations);
+router.post('/admin/registrations/:id/approve', ensureAdmin, adminApproveRegistration);
+router.post('/admin/registrations/:id/reject', ensureAdmin, adminRejectRegistration);
 
 // Admin routes
 router.get("/admin/dashboard", adminDashboard);
@@ -62,6 +86,10 @@ router.get("/admin/resolution-history", resolutionHistory);
 router.get("/bidder/dashboard", bidderDashboard);
 router.get("/bidder/submission", bidderSubmission);
 router.get("/bidder/bid-submit", bidSubmit);
+router.get("/bidder/documents", (req, res) => res.render("bidder/documents", { title: "My Documents" }));
+router.get("/bidder/bid-status", (req, res) => res.render("bidder/bid-status", { title: "Bid Status" }));
+router.get("/bidder/profile", (req, res) => res.render("bidder/profile", { title: "My Profile" }));
+router.get("/bidder/support", (req, res) => res.render("bidder/support", { title: "Support" }));
 
 // Public routes
 router.get("/public/transparency", publicTransparency);
@@ -69,5 +97,9 @@ router.get("/public/transparency", publicTransparency);
 // Audit routes
 router.get("/audit/report", auditReport);
 router.get("/audit/flags", auditFlags);
+router.get("/audit/projects", (req, res) => res.render("audit/projects", { title: "Projects" }));
+router.get("/audit/audit-logs", (req, res) => res.render("audit/audit-logs", { title: "Audit Logs" }));
+router.get("/audit/red-flag-resolution", (req, res) => res.render("audit/red-flag-resolution", { title: "Red Flag Resolution" }));
+router.get("/audit/resolution-history", (req, res) => res.render("audit/resolution-history", { title: "Resolution History" }));
 
 export default router;

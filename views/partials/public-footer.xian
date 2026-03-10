@@ -1,0 +1,90 @@
+<!-- Public Footer -->
+<footer class="bg-gray-900 text-gray-400 mt-auto">
+  <!-- Main Footer -->
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand Column -->
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
+            <i class="fas fa-link text-white text-xs"></i>
+          </div>
+          <div>
+            <div class="text-sm font-extrabold text-white">MuniChain</div>
+            <div class="text-[9px] text-gray-500 uppercase tracking-widest">Transparency Portal</div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed mb-4">
+          Blockchain-Based Procurement & Bidding Management System for the Municipal Bids and Awards Committee.
+        </p>
+        <div class="flex items-center gap-2 px-3 py-1.5 bg-gray-800 rounded-lg w-fit">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span class="text-[10px] font-semibold text-green-400">Blockchain Ledger Active</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+        <ul class="space-y-2.5">
+          <li><a href="/public/transparency" class="text-xs text-gray-500 hover:text-white transition-colors">Dashboard</a></li>
+          <li><a href="/public/projects" class="text-xs text-gray-500 hover:text-white transition-colors">Browse Projects</a></li>
+          <li><a href="/public/statistics" class="text-xs text-gray-500 hover:text-white transition-colors">Statistics & Analytics</a></li>
+          <li><a href="/public/verify" class="text-xs text-gray-500 hover:text-white transition-colors">Verify Transaction</a></li>
+          <li><a href="/public/about" class="text-xs text-gray-500 hover:text-white transition-colors">About the System</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal Framework -->
+      <div>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Legal Basis</h4>
+        <ul class="space-y-2.5">
+          <li><span class="text-xs text-gray-500">Republic Act No. 9184</span></li>
+          <li><span class="text-xs text-gray-500">Republic Act No. 12009 (NGPA)</span></li>
+          <li><span class="text-xs text-gray-500">RA 10173 (Data Privacy Act)</span></li>
+          <li><a href="#" class="text-xs text-gray-500 hover:text-white transition-colors">COA Audit Guidelines</a></li>
+          <li><a href="#" class="text-xs text-gray-500 hover:text-white transition-colors">PhilGEPS Integration</a></li>
+        </ul>
+      </div>
+
+      <!-- Oversight Bodies -->
+      <div>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Oversight & Contact</h4>
+        <ul class="space-y-2.5">
+          <li class="flex items-center gap-2"><i class="fas fa-landmark text-[10px] text-gray-600 w-4"></i><span class="text-xs text-gray-500">Commission on Audit (COA)</span></li>
+          <li class="flex items-center gap-2"><i class="fas fa-building-columns text-[10px] text-gray-600 w-4"></i><span class="text-xs text-gray-500">Dept. of Budget & Management</span></li>
+          <li class="flex items-center gap-2"><i class="fas fa-globe text-[10px] text-gray-600 w-4"></i><span class="text-xs text-gray-500">mPhilGEPS eMarketplace</span></li>
+          <li class="mt-4 pt-3 border-t border-gray-800">
+            <span class="text-[10px] text-gray-600 uppercase tracking-wider font-semibold">Municipal BAC Office</span>
+            <p class="text-xs text-gray-500 mt-1">Bongabong, Oriental Mindoro</p>
+            <p class="text-xs text-gray-500">bac@bongabong.gov.ph</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-4">
+        <span class="text-[10px] text-gray-600">&copy; 2026 Municipal Government of Bongabong. All rights reserved.</span>
+        <span class="text-[10px] text-gray-700">|</span>
+        <span class="text-[10px] text-gray-600">Developed at Mindoro State University</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-[10px] text-gray-600 hover:text-gray-400 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-[10px] text-gray-600 hover:text-gray-400 transition-colors">Terms of Service</a>
+        <a href="#" class="text-[10px] text-gray-600 hover:text-gray-400 transition-colors">Accessibility</a>
+        <span class="text-[10px] text-gray-700 flex items-center gap-1">
+          <i class="fas fa-shield-halved text-gray-700"></i> Powered by Municipal Blockchain Ledger v2.1
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

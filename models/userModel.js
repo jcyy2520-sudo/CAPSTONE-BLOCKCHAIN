@@ -29,7 +29,30 @@ import { sequelize } from "./db.js";
 
 export const User = sequelize.define("User", {
   name: { type: DataTypes.STRING, allowNull: false },
-  email: { type: DataTypes.STRING, allowNull: false },
-  password: { type: DataTypes.STRING, allowNull: false }
+  email: { type: DataTypes.STRING, allowNull: false, unique: true, validate: { isEmail: true } },
+  password: { type: DataTypes.STRING, allowNull: false },
+  // Company / registration fields
+  tin: { type: DataTypes.STRING, allowNull: true },
+  business_type: { type: DataTypes.STRING, allowNull: true },
+  industry_category: { type: DataTypes.STRING, allowNull: true },
+  representative_name: { type: DataTypes.STRING, allowNull: true },
+  representative_email: { type: DataTypes.STRING, allowNull: true },
+  representative_contact: { type: DataTypes.STRING, allowNull: true },
+  // Uploaded document paths / metadata
+  business_permit_path: { type: DataTypes.STRING, allowNull: true },
+  tax_clearance_path: { type: DataTypes.STRING, allowNull: true },
+  philgeps_cert_path: { type: DataTypes.STRING, allowNull: true },
+  financial_statements_path: { type: DataTypes.STRING, allowNull: true },
+  // registration status
+  status: { type: DataTypes.STRING, allowNull: false, defaultValue: "pending" }
+  ,
+  // Blockchain anchoring
+  digital_procurement_id: { type: DataTypes.STRING, allowNull: true },
+  blockchain_tx: { type: DataTypes.STRING, allowNull: true }
+  ,
+  // role and admin review fields
+  role: { type: DataTypes.STRING, allowNull: false, defaultValue: "bidder" },
+  approved_at: { type: DataTypes.DATE, allowNull: true },
+  rejected_reason: { type: DataTypes.TEXT, allowNull: true }
 });
 export { sequelize }; 

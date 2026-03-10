@@ -1,0 +1,45 @@
+<!-- Admin Sidebar Partial -->
+<aside class="w-56 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 z-30">
+  <div class="p-5 border-b border-gray-100">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+        <i class="fas fa-user text-primary text-sm"></i>
+      </div>
+      <div class="leading-tight">
+        <div class="text-sm font-bold text-gray-900">BAC Admin</div>
+        <div class="text-[10px] text-gray-400">Municipality of Roxas</div>
+      </div>
+    </div>
+  </div>
+  <nav class="flex-1 p-3 space-y-1">
+    <a href="/admin/dashboard" class="flex items-center gap-3 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold">
+      <i class="fas fa-th-large text-xs w-4"></i> Dashboard
+    </a>
+    <a href="/admin/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-folder-open text-xs w-4"></i> Procurements
+    </a>
+    <a href="/admin/bid-evaluation" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-gavel text-xs w-4"></i> Bids Management
+    </a>
+    <a href="/admin/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-users text-xs w-4"></i> Suppliers
+    </a>
+    <a href="/admin/final-ranking" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-chart-bar text-xs w-4"></i> Reports
+    </a>
+    <a href="/admin/registrations" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-user-check text-xs w-4"></i> Registrations
+    </a>
+    <a href="/audit/report" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-link text-xs w-4"></i> Blockchain Logs
+    </a>
+    <a href="/admin/smart-contract" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-cog text-xs w-4"></i> Settings
+    </a>
+  </nav>
+  <div class="p-3 border-t border-gray-100">
+    <a href="/logout" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-sign-out-alt text-xs w-4"></i> Sign Out
+    </a>
+  </div>
+</aside>

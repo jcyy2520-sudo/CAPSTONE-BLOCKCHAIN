@@ -1,0 +1,68 @@
+<!-- Public Navigation Bar — No Auth Required -->
+<header class="bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/public/transparency" class="flex items-center gap-3 group">
+      <div class="relative">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200/50 group-hover:shadow-blue-300/60 transition-shadow">
+          <i class="fas fa-link text-white text-sm"></i>
+        </div>
+        <div class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+      </div>
+      <div class="leading-tight">
+        <div class="text-sm font-extrabold text-gray-900 tracking-tight">MuniChain</div>
+        <div class="text-[9px] text-gray-400 font-medium uppercase tracking-widest">Public Transparency Portal</div>
+      </div>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="/public/transparency" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all" id="nav-home">
+        <i class="fas fa-home text-xs mr-1.5"></i>Dashboard
+      </a>
+      <a href="/public/projects" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all" id="nav-projects">
+        <i class="fas fa-folder-open text-xs mr-1.5"></i>Projects
+      </a>
+      <a href="/public/statistics" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all" id="nav-stats">
+        <i class="fas fa-chart-pie text-xs mr-1.5"></i>Statistics
+      </a>
+      <a href="/public/verify" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all" id="nav-verify">
+        <i class="fas fa-shield-halved text-xs mr-1.5"></i>Verify
+      </a>
+      <a href="/public/about" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all" id="nav-about">
+        <i class="fas fa-circle-info text-xs mr-1.5"></i>About
+      </a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-green-50 border border-green-200 rounded-full">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+        </span>
+        <span class="text-[10px] font-bold text-green-700">Ledger Online</span>
+      </div>
+      <a href="/login" class="px-4 py-2 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors">
+        Sign In
+      </a>
+      <a href="/register" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 shadow-md shadow-blue-200/50 hover:shadow-blue-300/60 transition-all">
+        Register as Bidder
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="md:hidden p-2 text-gray-500 hover:text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fas fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden mt-3 pb-3 border-t border-gray-100 pt-3 space-y-1">
+    <a href="/public/transparency" class="block px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg"><i class="fas fa-home text-xs mr-2 w-4"></i>Dashboard</a>
+    <a href="/public/projects" class="block px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg"><i class="fas fa-folder-open text-xs mr-2 w-4"></i>Projects</a>
+    <a href="/public/statistics" class="block px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg"><i class="fas fa-chart-pie text-xs mr-2 w-4"></i>Statistics</a>
+    <a href="/public/verify" class="block px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg"><i class="fas fa-shield-halved text-xs mr-2 w-4"></i>Verify</a>
+    <a href="/public/about" class="block px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg"><i class="fas fa-circle-info text-xs mr-2 w-4"></i>About</a>
+  </div>
+</header>

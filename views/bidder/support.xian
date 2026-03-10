@@ -1,0 +1,30 @@
+{{> head }}
+<body class="bg-gray-50 min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white border-r border-gray-100 flex flex-col min-h-screen fixed left-0 top-0 z-30">
+    <div class="p-5 border-b border-gray-100">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"><i class="fas fa-cube text-white text-xs"></i></div>
+        <span class="text-base font-bold text-primary">ProcureChain</span>
+      </div>
+    </div>
+    <nav class="flex-1 p-3 space-y-1">
+      <a href="/bidder/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium"><i class="fas fa-th-large text-xs w-4"></i> Dashboard</a>
+      <a href="/bidder/submission" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium"><i class="fas fa-gavel text-xs w-4"></i> My Bids</a>
+      <a href="/bidder/documents" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium"><i class="fas fa-file-alt text-xs w-4"></i> Documents</a>
+      <a href="/bidder/bid-status" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium"><i class="fas fa-chart-line text-xs w-4"></i> Bid Status</a>
+      <a href="/bidder/profile" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium"><i class="fas fa-user-circle text-xs w-4"></i> Profile</a>
+      <a href="/bidder/support" class="flex items-center gap-3 px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold"><i class="fas fa-headset text-xs w-4"></i> Support</a>
+    </nav>
+  </aside>
+  <!-- Main Content -->
+  <main class="flex-1 ml-56 p-8">
+    <h1 class="text-2xl font-extrabold text-gray-900 mb-4">Support</h1>
+    <p class="text-gray-500 mb-6">Need help? Contact our support team at <a href="mailto:support@procurechain.com" class="text-primary underline">support@procurechain.com</a>.</p>
+    <ul class="list-disc pl-6 text-gray-700">
+      <li>FAQ</li>
+      <li>Live Chat</li>
+      <li>Contact Form</li>
+    </ul>
+  </main>
+</body>

@@ -9,19 +9,7 @@
       </div>
       <div class="leading-tight">
         <div class="text-sm font-bold text-primary">Procurement System</div>
-        <div class="text-[10px] text-gray-400 tracking-wider uppercase">Municipality of San Isidro</div>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <div class="text-right">
-        <div class="text-[10px] text-gray-400 uppercase tracking-wider">Network Status</div>
-        <div class="flex items-center gap-1.5">
-          <span class="w-2 h-2 bg-success-green rounded-full animate-pulse"></span>
-          <span class="text-xs font-semibold text-primary">Blockchain Online</span>
-        </div>
-      </div>
-      <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-        <i class="fas fa-user text-gray-400 text-sm"></i>
+        <div class="text-[10px] text-gray-400 tracking-wider uppercase">Municipality of Roxas</div>
       </div>
     </div>
   </header>
@@ -47,6 +35,15 @@
             Registered Bidder
           </button>
         </div>
+
+        <!-- Flash messages -->
+        {{#if error_msg}}
+        <div class="mb-4">
+          {{#each error_msg}}
+            <div class="text-sm text-red-600">{{this}}</div>
+          {{/each}}
+        </div>
+        {{/if}}
 
         <!-- Form -->
         <form action="/login" method="POST">
