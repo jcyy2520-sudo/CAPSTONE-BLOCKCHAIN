@@ -1,0 +1,88 @@
+{{> head }}
+<body class="ml-56 bg-gray-50">
+  {{> sidebar }}
+  <main class="flex-1 p-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Procurement Invitations</h1>
+      <p class="text-gray-600">View all procurements you have been invited to</p>
+    </div>
+
+    {{#if success_msg}}
+    <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
+      <i class="fas fa-check-circle mr-2"></i>{{success_msg}}
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+      <i class="fas fa-exclamation-circle mr-2"></i>{{error_msg}}
+    </div>
+    {{/if}}
+
+    {{#if invitations}}
+    <div class="grid grid-cols-1 gap-6">
+      {{#each invitations}}
+      <div class="bg-white rounded-xl card-shadow p-6 border-l-4 {{#equals this.status 'pending'}}border-yellow-500{{else}}{{#equals this.status 'accepted'}}border-success-green{{else}}border-gray-300{{/equals}}{{/equals}}">
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{{this.procurement_title}}</h3>
+            <div class="flex gap-4 items-center text-sm text-gray-600 mb-3">
+              <span>
+                <i class="fas fa-tag text-primary mr-2"></i>{{this.procurement_mode}}
+              </span>
+              {{#if this.bid_closing_date}}
+              <span>
+                <i class="fas fa-calendar text-primary mr-2"></i>Closes: {{formatDate this.bid_closing_date 'MMM DD, YYYY'}}
+              </span>
+              {{/if}}
+            </div>
+          </div>
+
+          {{#equals this.status 'pending'}}
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
+            <i class="fas fa-hourglass-half mr-2"></i>Pending Response
+          </span>
+          {{/equals}}
+          {{#equals this.status 'accepted'}}
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
+            <i class="fas fa-check-circle mr-2"></i>Accepted
+          </span>
+          {{/equals}}
+          {{#equals this.status 'rejected'}}
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">
+            <i class="fas fa-times-circle mr-2"></i>Declined
+          </span>
+          {{/equals}}
+        </div>
+
+        <div class="flex gap-3">
+          <a href="/bidder/procurement/{{this.procurement_id}}" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark font-medium transition-colors">
+            <i class="fas fa-file-pdf mr-2"></i>View Details
+          </a>
+
+          {{#equals this.status 'pending'}}
+          <form method="POST" action="/bidder/invitations/{{this.id}}/accept" style="display:inline;">
+            <button type="submit" class="px-4 py-2 bg-success-green text-white rounded-lg hover:bg-green-600 font-medium transition-colors">
+              <i class="fas fa-check mr-2"></i>Accept
+            </button>
+          </form>
+          <form method="POST" action="/bidder/invitations/{{this.id}}/reject" style="display:inline;">
+            <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 font-medium transition-colors">
+              <i class="fas fa-times mr-2"></i>Decline
+            </button>
+          </form>
+          {{/equals}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="bg-white rounded-xl card-shadow p-12 text-center">
+      <i class="fas fa-inbox text-6xl text-gray-300 mb-4"></i>
+      <p class="text-gray-600 text-lg">You have no invitations at this time.</p>
+      <p class="text-gray-500 text-sm mt-2">Check back regularly for new procurement opportunities.</p>
+    </div>
+    {{/if}}
+  </main>
+</body>
+{{> footer }}

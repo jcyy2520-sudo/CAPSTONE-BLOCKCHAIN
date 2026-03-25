@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Evaluate Bid</h1>
+        <p class="text-muted">{{bidder.name}} - {{procurement.title}}</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <div class="row">
+        <!-- Bid Information -->
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Bid Information</h5>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Bidder</label>
+                  <p>{{bidder.name}}</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Email</label>
+                  <p>{{bidder.email}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Bid Amount</label>
+                  <p><strong>PHP {{formatCurrency bid.bid_amount}}</strong></p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Submission Date</label>
+                  <p>{{formatDateTime bid.submission_date}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label class="form-label text-muted">Procurement Details</label>
+                  <p>
+                    <strong>{{procurement.title}}</strong><br>
+                    Mode: {{procurement.mode}} | ABC: PHP {{formatCurrency procurement.abc}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Evaluation Form -->
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              <h5 class="mb-0">Evaluation Criteria & Scoring</h5>
+            </div>
+            <div class="card-body">
+              <form method="POST" action="/admin/procurement/{{procurement.id}}/evaluate/{{bid.id}}">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                <!-- Technical Evaluation -->
+                <div class="mb-4">
+                  <h6 class="text-muted text-uppercase font-weight-bold">Technical Evaluation</h6>
+                  <small class="d-block mb-3 text-muted">
+                    {{#if (this.evaluation_criteria.technical)}}
+                    Weight: {{this.evaluation_criteria.technical.weight}}%
+                    {{/if}}
+                  </small>
+
+                  <div class="mb-3">
+                    <label for="technical_score" class="form-label">Technical Score (0-100) <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" id="technical_score" name="technical_score"
+                           min="0" max="100" step="0.01" required
+                           value="{{evaluation.technical_score}}">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="technical_remarks" class="form-label">Technical Remarks</label>
+                    <textarea class="form-control" id="technical_remarks" name="technical_remarks"
+                              rows="3" maxlength="1000">{{evaluation.technical_remarks}}</textarea>
+                    <small class="form-text text-muted">Provide your technical assessment</small>
+                  </div>
+                </div>
+
+                <hr>
+
+                <!-- Financial Evaluation -->
+                <div class="mb-4">
+                  <h6 class="text-muted text-uppercase font-weight-bold">Financial Evaluation</h6>
+                  <small class="d-block mb-3 text-muted">
+                    {{#if (this.evaluation_criteria.financial)}}
+                    Weight: {{this.evaluation_criteria.financial.weight}}%
+                    {{/if}}
+                  </small>
+
+                  <div class="mb-3">
+                    <label for="financial_score" class="form-label">Financial Score (0-100) <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" id="financial_score" name="financial_score"
+                           min="0" max="100" step="0.01" required
+                           value="{{evaluation.financial_score}}">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="financial_remarks" class="form-label">Financial Remarks</label>
+                    <textarea class="form-control" id="financial_remarks" name="financial_remarks"
+                              rows="3" maxlength="1000">{{evaluation.financial_remarks}}</textarea>
+                    <small class="form-text text-muted">Provide your financial assessment</small>
+                  </div>
+                </div>
+
+                <hr>
+
+                <!-- General Remarks -->
+                <div class="mb-4">
+                  <label for="evaluator_remarks" class="form-label">Evaluator General Remarks</label>
+                  <textarea class="form-control" id="evaluator_remarks" name="evaluator_remarks"
+                            rows="4" maxlength="1000">{{evaluation.evaluator_remarks}}</textarea>
+                </div>
+
+                <!-- Score Preview -->
+                <div class="alert alert-info">
+                  <h6>Calculated Total Score (Preview):</h6>
+                  <div id="scorePreview">
+                    <p class="mb-0">Technical (50%): <strong id="techWeighted">0.00</strong> points</p>
+                    <p class="mb-0">Financial (50%): <strong id="finWeighted">0.00</strong> points</p>
+                    <p class="mt-2 mb-0 text-larger"><strong>Total: <span id="totalScore">0.00</span> / 100</strong></p>
+                  </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <a href="/admin/procurement/{{procurement.id}}/bids" class="btn btn-outline-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Submit Evaluation</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bid Documents -->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">Bid Documents</h5>
+            </div>
+            <div class="card-body">
+              {{#if bid.technical_proposal_path}}
+              <div class="mb-2">
+                <label class="form-label text-muted small">Technical Proposal</label>
+                <a href="/admin/document/{{bid.id}}/technical" class="btn btn-sm btn-outline-primary w-100" target="_blank">
+                  View Document
+                </a>
+              </div>
+              {{/if}}
+
+              {{#if bid.financial_proposal_path}}
+              <div class="mb-2">
+                <label class="form-label text-muted small">Financial Proposal</label>
+                <a href="/admin/document/{{bid.id}}/financial" class="btn btn-sm btn-outline-primary w-100" target="_blank">
+                  View Document
+                </a>
+              </div>
+              {{/if}}
+
+              <hr>
+
+              <div class="mb-2">
+                <label class="form-label text-muted small">Blockchain Information</label>
+                <p class="small font-monospace">{{bid.blockchain_tx}}</p>
+              </div>
+            </div>
+          </div>
+
+          {{#if evaluation}}
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h5 class="mb-0">Previous Evaluation</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <strong>Technical:</strong> {{evaluation.technical_score}}/100
+              </p>
+              <p>
+                <strong>Financial:</strong> {{evaluation.financial_score}}/100
+              </p>
+              <p>
+                <strong>Total Score:</strong> {{evaluation.total_score}}/100
+              </p>
+              <p>
+                <strong>Status:</strong>
+                <span class="badge bg-success">{{evaluation.status}}</span>
+              </p>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const techScore = document.getElementById('technical_score');
+    const finScore = document.getElementById('financial_score');
+    const techWeighted = document.getElementById('techWeighted');
+    const finWeighted = document.getElementById('finWeighted');
+    const totalScore = document.getElementById('totalScore');
+
+    function calculateScore() {
+      const tech = parseFloat(techScore.value || 0);
+      const fin = parseFloat(finScore.value || 0);
+
+      const techW = (tech * 50) / 100;
+      const finW = (fin * 50) / 100;
+      const total = techW + finW;
+
+      techWeighted.textContent = techW.toFixed(2);
+      finWeighted.textContent = finW.toFixed(2);
+      totalScore.textContent = total.toFixed(2);
+    }
+
+    techScore.addEventListener('input', calculateScore);
+    finScore.addEventListener('input', calculateScore);
+
+    // Initial calculation
+    calculateScore();
+  </script>
+</body>
+</html>

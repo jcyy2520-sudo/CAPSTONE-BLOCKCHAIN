@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Blockchain Explorer</h1>
+        <p class="text-muted">Search and verify blockchain data</p>
+      </div>
+
+      <!-- Search -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <form method="GET" action="/admin/blockchain/explorer" class="row g-3">
+            <div class="col-12">
+              <label for="search" class="form-label">Search by Block Hash or Transaction Hash</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="search" name="search"
+                       placeholder="Enter hash..." value="{{search_query}}">
+                <button class="btn btn-primary" type="submit">Search</button>
+                <a href="/admin/blockchain/explorer" class="btn btn-outline-secondary">Clear</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Blocks</h6>
+              <h3 class="card-text">{{stats.block_count}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Transactions</h6>
+              <h3 class="card-text">{{stats.transaction_count}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Verified Transactions</h6>
+              <h3 class="card-text">{{stats.valid_transactions}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#if search_result}}
+      <!-- Search Result -->
+      <div class="card">
+        <div class="card-header {{#if (eq search_result.type 'block')}}bg-primary{{else}}bg-secondary{{/if}} text-white">
+          <h5 class="mb-0">
+            {{#if (eq search_result.type 'block')}}
+            Block #{{search_result.data.block_number}}
+            {{else}}
+            Transaction
+            {{/if}}
+          </h5>
+        </div>
+        <div class="card-body">
+          {{#if (eq search_result.type 'block')}}
+          <!-- Block Details -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted">Block Number</label>
+              <p>{{search_result.data.block_number}}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-muted">Timestamp</label>
+              <p>{{formatDate search_result.data.timestamp}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Block Hash</label>
+              <p class="font-monospace text-break">{{search_result.data.block_hash}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Previous Hash</label>
+              <p class="font-monospace text-break">{{search_result.data.previous_hash}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Merkle Root</label>
+              <p class="font-monospace text-break">{{search_result.data.merkle_root}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted">Transaction Count</label>
+              <p>{{search_result.data.transaction_count}}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-muted">Difficulty</label>
+              <p>{{search_result.data.difficulty}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted">Status</label>
+              <p>
+                {{#if search_result.data.is_valid}}
+                <span class="badge bg-success">Valid</span>
+                {{else}}
+                <span class="badge bg-danger">Invalid</span>
+                {{/if}}
+              </p>
+            </div>
+          </div>
+
+          <a href="/admin/blockchain/block/{{search_result.data.block_number}}" class="btn btn-primary">View Block Details</a>
+
+          {{else}}
+          <!-- Transaction Details -->
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Transaction Hash</label>
+              <p class="font-monospace text-break">{{search_result.data.tx_hash}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted">Type</label>
+              <p><span class="badge bg-primary">{{search_result.data.tx_type}}</span></p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-muted">Block</label>
+              <p>
+                {{#if search_result.data.block_number}}
+                <a href="/admin/blockchain/block/{{search_result.data.block_number}}">#{{search_result.data.block_number}}</a>
+                {{else}}
+                <span class="badge bg-warning">Pending</span>
+                {{/if}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted">Resource</label>
+              <p>{{search_result.data.resource_type}} #{{search_result.data.resource_id}}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-muted">Status</label>
+              <p>
+                {{#if (eq search_result.data.status 'confirmed')}}
+                <span class="badge bg-success">Confirmed</span>
+                {{else if (eq search_result.data.status 'pending')}}
+                <span class="badge bg-warning">Pending</span>
+                {{else}}
+                <span class="badge bg-danger">Invalid</span>
+                {{/if}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Data Hash</label>
+              <p class="font-monospace">{{search_result.data.data_hash}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label text-muted">Transaction Data</label>
+              <pre class="bg-light p-3 rounded">{{JSON.stringify search_result.data.full_data null 2}}</pre>
+            </div>
+          </div>
+
+          {{/if}}
+        </div>
+      </div>
+      {{else if search_query}}
+      <div class="alert alert-warning">
+        <strong>Not found:</strong> No block or transaction found matching "{{search_query}}"
+      </div>
+      {{else}}
+      <!-- Help Section -->
+      <div class="card">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">About the Blockchain Explorer</h5>
+        </div>
+        <div class="card-body">
+          <p>The Blockchain Explorer allows you to view and verify all transactions recorded on the blockchain. You can search for:</p>
+          <ul>
+            <li><strong>Block Hash:</strong> SHA-256 hash of a block</li>
+            <li><strong>Transaction Hash:</strong> SHA-256 hash of a transaction</li>
+          </ul>
+
+          <h6 class="mt-4">Quick Links:</h6>
+          <div class="btn-group" role="group">
+            <a href="/admin/blockchain/blocks" class="btn btn-outline-primary">View Blocks</a>
+            <a href="/admin/blockchain/transactions" class="btn btn-outline-secondary">View Transactions</a>
+            <a href="/admin/blockchain/dashboard" class="btn btn-outline-info">Blockchain Dashboard</a>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

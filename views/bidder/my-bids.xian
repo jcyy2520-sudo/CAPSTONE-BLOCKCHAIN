@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>{{title}}</h1>
+        <p class="text-muted">Manage and submit your bids</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      {{#if messages.success_msg}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{messages.success_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <!-- Active Invitations -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Active Procurements for Bidding</h5>
+        </div>
+        <div class="card-body">
+          {{#if invitations.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Procurement Title</th>
+                  <th>Mode</th>
+                  <th>ABC</th>
+                  <th>Bid Closing Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each invitations}}
+                <tr>
+                  <td><strong>{{this.procurement_title}}</strong></td>
+                  <td><span class="badge bg-info">{{this.procurement_mode}}</span></td>
+                  <td>PHP {{formatCurrency this.procurement_abc}}</td>
+                  <td>{{formatDate this.procurement_bid_closing}}</td>
+                  <td>
+                    {{#if this.bid_submitted}}
+                    <span class="badge bg-success">Bid Submitted</span>
+                    {{else}}
+                    <span class="badge bg-warning">Pending Submission</span>
+                    {{/if}}
+                  </td>
+                  <td>
+                    {{#if this.bid_submitted}}
+                    <a href="/bidder/bid-status/{{this.bid_id}}" class="btn btn-sm btn-info">View Bid</a>
+                    {{else}}
+                    <a href="/bidder/procurement/{{this.procurement_id}}" class="btn btn-sm btn-primary">Submit Bid</a>
+                    {{/if}}
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <div class="alert alert-info">
+            <p>You have no active invitations. Check back soon for new procurement opportunities.</p>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <!-- My Submitted Bids -->
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h5 class="mb-0">My Bid Submissions</h5>
+        </div>
+        <div class="card-body">
+          {{#if my_bids.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Procurement</th>
+                  <th>Bid Amount</th>
+                  <th>Submission Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each my_bids}}
+                <tr>
+                  <td>{{this.procurement_title}}</td>
+                  <td>PHP {{formatCurrency this.bid_amount}}</td>
+                  <td>{{formatDate this.submission_date}}</td>
+                  <td>
+                    <span class="badge {{statusBadgeClass this.status}}">
+                      {{this.status}}
+                    </span>
+                  </td>
+                  <td>
+                    <a href="/bidder/bid-status/{{this.id}}" class="btn btn-sm btn-outline-primary">Details</a>
+                    {{#if (eq this.status 'submitted')}}
+                    <form method="POST" action="/bidder/bid/{{this.id}}/withdraw" style="display: inline;">
+                      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                      <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">Withdraw</button>
+                    </form>
+                    {{/if}}
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <p class="text-muted">No bids submitted yet.</p>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -7,6 +7,10 @@
     "xian-start": "node index.js",
     "xian": "nodemon index.js",
     "migrate": "node migrate.js",
+    "migrate:rework": "node migrate-rework.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "blockchain:verify": "node scripts/verify-blockchain.js",
     "create:model": "node create.js model",
     "create:controller": "node create.js controller"
   },
@@ -20,5 +24,10 @@
     "mysql2": "^3.9.2",
     "sequelize": "^6.37.3",
     "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.1"
   }
 }

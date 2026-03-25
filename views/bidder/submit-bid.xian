@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Submit Bid</h1>
+        <p class="text-muted">{{procurement.title}}</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <div class="row">
+        <!-- Procurement Details -->
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Procurement Information</h5>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Title</label>
+                  <p>{{procurement.title}}</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Mode</label>
+                  <p>{{procurement.mode}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label class="form-label text-muted">Description</label>
+                  <p>{{procurement.description}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Approved Budget for Contract (ABC)</label>
+                  <p><strong>PHP {{formatCurrency procurement.abc}}</strong></p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Bid Closing Date</label>
+                  <p><strong>{{formatDateTime procurement.bid_closing_date}}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bid Submission Form -->
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              <h5 class="mb-0">Submit Your Bid</h5>
+            </div>
+            <div class="card-body">
+              {{#if existingBid}}
+              <div class="alert alert-warning">
+                You have already submitted a bid. You can update it by submitting again.
+              </div>
+              {{/if}}
+
+              <form method="POST" action="/bidder/procurement/{{procurement.id}}/submit-bid" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                <div class="mb-3">
+                  <label for="bid_amount" class="form-label">Bid Amount (PHP) <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">PHP</span>
+                    <input type="number" class="form-control" id="bid_amount" name="bid_amount"
+                           step="0.01" min="0" required placeholder="Enter bid amount"
+                           value="{{existingBid.bid_amount}}">
+                  </div>
+                  <small class="form-text text-muted">Should not exceed ABC of PHP {{formatCurrency procurement.abc}}</small>
+                </div>
+
+                <div class="mb-3">
+                  <label for="technical_proposal" class="form-label">Technical Proposal (PDF/DOC) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="technical_proposal" name="technical_proposal"
+                         accept=".pdf,.doc,.docx" required>
+                  <small class="form-text text-muted">Maximum file size: 10MB. Accepted formats: PDF, DOC, DOCX</small>
+                </div>
+
+                <div class="mb-3">
+                  <label for="financial_proposal" class="form-label">Financial Proposal (PDF/DOC) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="financial_proposal" name="financial_proposal"
+                         accept=".pdf,.doc,.docx" required>
+                  <small class="form-text text-muted">Maximum file size: 10MB. Accepted formats: PDF, DOC, DOCX</small>
+                </div>
+
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="confirm" required>
+                    <label class="form-check-label" for="confirm">
+                      I certify that the information provided is true and accurate. I understand that submission of false information may result in disqualification.
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <a href="/bidder/procurement/{{procurement.id}}" class="btn btn-outline-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Submit Bid</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">Important Information</h5>
+            </div>
+            <div class="card-body">
+              <div class="alert alert-info">
+                <strong>Before submitting:</strong>
+                <ul class="mb-0 mt-2">
+                  <li>Ensure all documents are complete and accurate</li>
+                  <li>Bid amount should be competitive</li>
+                  <li>Do not exceed the Approved Budget for Contract</li>
+                  <li>Submission is final and cannot be edited</li>
+                  <li>You can only withdraw before bid opening</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {{#if existingBid}}
+          <div class="card">
+            <div class="card-header bg-warning text-dark">
+              <h5 class="mb-0">Current Bid Status</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <strong>Amount:</strong> PHP {{formatCurrency existingBid.bid_amount}}
+              </p>
+              <p>
+                <strong>Submitted:</strong> {{formatDateTime existingBid.submission_date}}
+              </p>
+              <p>
+                <strong>Status:</strong>
+                <span class="badge {{statusBadgeClass existingBid.status}}">
+                  {{existingBid.status}}
+                </span>
+              </p>
+              {{#if (eq existingBid.status 'submitted')}}
+              <a href="/bidder/bid-status/{{existingBid.id}}" class="btn btn-sm btn-outline-primary w-100">View Details</a>
+              {{/if}}
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Validate bid amount
+    document.getElementById('bid_amount').addEventListener('change', function() {
+      const bidAmount = parseFloat(this.value);
+      const abc = {{procurement.abc}};
+
+      if (bidAmount > abc) {
+        alert('Bid amount exceeds Approved Budget for Contract (ABC).');
+        this.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

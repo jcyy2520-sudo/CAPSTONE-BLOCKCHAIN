@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>{{title}}</h1>
+        <p class="text-muted">Bid Submission Details</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      {{#if messages.success_msg}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{messages.success_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <div class="row">
+        <!-- Bid Information -->
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Bid Details</h5>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Bid ID</label>
+                  <p>{{bid.id}}</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Status</label>
+                  <p>
+                    <span class="badge {{statusBadgeClass bid.status}}">
+                      {{toUpper bid.status}}
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Procurement</label>
+                  <p>{{procurement.title}}</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Mode</label>
+                  <p>{{procurement.mode}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Bid Amount</label>
+                  <p><strong>PHP {{formatCurrency bid.bid_amount}}</strong></p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Submission Date</label>
+                  <p>{{formatDateTime bid.submission_date}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Technical Hash</label>
+                  <p class="font-monospace">{{bid.technical_hash}}</p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Financial Hash</label>
+                  <p class="font-monospace">{{bid.financial_hash}}</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label class="form-label text-muted">Bid Sealing Hash (Blockchain)</label>
+                  <p class="font-monospace text-break">{{bid.bid_sealing_hash}}</p>
+                </div>
+              </div>
+
+              {{#if bid.blockchain_tx}}
+              <div class="row mb-3">
+                <div class="col-12">
+                  <label class="form-label text-muted">Blockchain Transaction</label>
+                  <p class="font-monospace">{{bid.blockchain_tx}}</p>
+                  <span class="badge bg-success">Blockchain Verified</span>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+
+          <!-- Documents -->
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              <h5 class="mb-0">Bid Documents</h5>
+            </div>
+            <div class="card-body">
+              <div class="list-group">
+                {{#if bid.technical_proposal_path}}
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                      <h6 class="mb-1">Technical Proposal</h6>
+                      <p class="mb-1 text-muted small">{{bid.technical_proposal_path}}</p>
+                    </div>
+                    <a href="/bidder/bid/{{bid.id}}/download/technical" class="btn btn-sm btn-primary">Download</a>
+                  </div>
+                </div>
+                {{/if}}
+
+                {{#if bid.financial_proposal_path}}
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                      <h6 class="mb-1">Financial Proposal</h6>
+                      <p class="mb-1 text-muted small">{{bid.financial_proposal_path}}</p>
+                    </div>
+                    <a href="/bidder/bid/{{bid.id}}/download/financial" class="btn btn-sm btn-primary">Download</a>
+                  </div>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Summary -->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">Status Summary</h5>
+            </div>
+            <div class="card-body">
+              <div class="bid-status-timeline">
+                <div class="status-item {{#if (eq bid.status 'submitted')}}active{{/if}}">
+                  <span class="status-marker"></span>
+                  <div class="status-text">
+                    <h6>Submitted</h6>
+                    <p class="small text-muted">Bid has been submitted</p>
+                  </div>
+                </div>
+
+                <div class="status-item {{#if (eq bid.status 'opened')}}active{{/if}}">
+                  <span class="status-marker"></span>
+                  <div class="status-text">
+                    <h6>Opened</h6>
+                    <p class="small text-muted">Bid has been opened</p>
+                  </div>
+                </div>
+
+                <div class="status-item {{#if (eq bid.status 'evaluated')}}active{{/if}}">
+                  <span class="status-marker"></span>
+                  <div class="status-text">
+                    <h6>Evaluated</h6>
+                    <p class="small text-muted">Bid is being evaluated</p>
+                  </div>
+                </div>
+
+                <div class="status-item {{#if (eq bid.status 'won')}}active{{/if}}">
+                  <span class="status-marker"></span>
+                  <div class="status-text">
+                    <h6>Won</h6>
+                    <p class="small text-muted">Your bid has won</p>
+                  </div>
+                </div>
+
+                <div class="status-item {{#if (eq bid.status 'rejected')}}active{{/if}}">
+                  <span class="status-marker"></span>
+                  <div class="status-text">
+                    <h6>Rejected</h6>
+                    <p class="small text-muted">Bid was not selected</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0">Actions</h5>
+            </div>
+            <div class="card-body">
+              {{#if (eq bid.status 'submitted')}}
+              <form method="POST" action="/bidder/bid/{{bid.id}}/withdraw">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <button type="submit" class="btn btn-outline-danger w-100" onclick="return confirm('Are you sure you want to withdraw this bid?')">
+                  Withdraw Bid
+                </button>
+              </form>
+              {{else}}
+              <p class="text-muted">No actions available for bids in {{bid.status}} status.</p>
+              {{/if}}
+
+              <hr>
+              <a href="/bidder/my-bids" class="btn btn-outline-secondary w-100">Back to My Bids</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .bid-status-timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .status-item {
+      display: flex;
+      padding: 15px 0;
+      position: relative;
+    }
+
+    .status-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 40px;
+      width: 2px;
+      height: 40px;
+      background: #dee2e6;
+    }
+
+    .status-item.active:not(:last-child)::after {
+      background: #198754;
+    }
+
+    .status-marker {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #dee2e6;
+      border: 2px solid white;
+      margin-right: 15px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .status-item.active .status-marker {
+      background: #198754;
+    }
+
+    .status-text h6 {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+  </style>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

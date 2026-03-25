@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Audit Logs</h1>
+        <p class="text-muted">Complete audit trail of all system actions</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <!-- Filters -->
+      <div class="card mb-4">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Filters</h5>
+        </div>
+        <div class="card-body">
+          <form method="GET" action="/audit/logs" class="row g-3">
+            <div class="col-md-4">
+              <label for="action" class="form-label">Action</label>
+              <select class="form-select" id="action" name="action">
+                <option value="">All Actions</option>
+                {{#each actions}}
+                <option value="{{this}}" {{#if (eq this ../selected_action)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="resource_type" class="form-label">Resource Type</label>
+              <select class="form-select" id="resource_type" name="resource_type">
+                <option value="">All Types</option>
+                {{#each resource_types}}
+                <option value="{{this}}" {{#if (eq this ../selected_resource_type)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+              <button type="submit" class="btn btn-primary w-100">Filter</button>
+              <a href="/audit/logs" class="btn btn-outline-secondary ms-2">Clear</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Audit Logs Table -->
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Audit Log Entries ({{pagination.total_count}})</h5>
+        </div>
+        <div class="card-body">
+          {{#if logs.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>User</th>
+                  <th>Action</th>
+                  <th>Resource</th>
+                  <th>Status</th>
+                  <th>IP Address</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each logs}}
+                <tr>
+                  <td>
+                    <small>{{formatDateTime this.created_at}}</small>
+                  </td>
+                  <td>{{this.user_name}}</td>
+                  <td>
+                    <span class="badge bg-info">{{this.action}}</span>
+                  </td>
+                  <td>
+                    {{this.resource_type}} #{{this.resource_id}}
+                  </td>
+                  <td>
+                    {{#if (eq this.status 'success')}}
+                    <span class="badge bg-success">Success</span>
+                    {{else}}
+                    <span class="badge bg-danger">Failed</span>
+                    {{/if}}
+                  </td>
+                  <td>
+                    <small class="text-muted">{{this.ip_address}}</small>
+                  </td>
+                  <td>
+                    <a href="/audit/log/{{this.id}}" class="btn btn-sm btn-outline-primary">Details</a>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          {{#if (gt pagination.total_pages 1)}}
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              {{#if pagination.has_prev}}
+              <li class="page-item">
+                <a class="page-link" href="/audit/logs?page={{subtract pagination.current_page 1}}{{#if selected_action}}&action={{selected_action}}{{/if}}">Previous</a>
+              </li>
+              {{/if}}
+
+              {{#each (range 1 (add pagination.total_pages 1))}}
+              <li class="page-item {{#if (eq this ../pagination.current_page)}}active{{/if}}">
+                <a class="page-link" href="/audit/logs?page={{this}}{{#if ../selected_action}}&action={{../selected_action}}{{/if}}">{{this}}</a>
+              </li>
+              {{/each}}
+
+              {{#if pagination.has_next}}
+              <li class="page-item">
+                <a class="page-link" href="/audit/logs?page={{add pagination.current_page 1}}{{#if selected_action}}&action={{selected_action}}{{/if}}">Next</a>
+              </li>
+              {{/if}}
+            </ul>
+          </nav>
+          {{/if}}
+          {{else}}
+          <p class="text-muted text-center py-4">No audit logs found.</p>
+          {{/if}}
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h6 class="card-title">Audit Report</h6>
+              <a href="/audit/report" class="btn btn-sm btn-outline-primary">Generate Report</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h6 class="card-title">Red Flags</h6>
+              <a href="/audit/red-flags" class="btn btn-sm btn-outline-warning">View Alerts</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h6 class="card-title">Export</h6>
+              <a href="/audit/export-report" class="btn btn-sm btn-outline-success">Export Logs</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

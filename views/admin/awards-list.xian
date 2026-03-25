@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>{{title}}</h1>
+        <p class="text-muted">List of all notices of award issued</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      {{#if messages.success_msg}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{messages.success_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <!-- Statistics -->
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Awards Issued</h6>
+              <h3 class="card-text">{{awards.length}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Award Value</h6>
+              <h3 class="card-text">PHP {{formatCurrency totalAwardValue}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Finalized Contracts</h6>
+              <h3 class="card-text">{{finalizedCount}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards Table -->
+      <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Notices of Award</h5>
+        </div>
+        <div class="card-body">
+          {{#if awards.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Procurement</th>
+                  <th>Winning Bidder</th>
+                  <th>Award Amount</th>
+                  <th>Award Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each awards}}
+                <tr>
+                  <td>
+                    <strong>{{this.procurement_title}}</strong>
+                  </td>
+                  <td>{{this.bidder_name}}</td>
+                  <td>
+                    <strong>PHP {{formatCurrency this.awarded_amount}}</strong>
+                  </td>
+                  <td>{{formatDate this.award_date}}</td>
+                  <td>
+                    {{#if (eq this.status 'issued')}}
+                    <span class="badge bg-info">Issued</span>
+                    {{else if (eq this.status 'accepted')}}
+                    <span class="badge bg-success">Accepted</span>
+                    {{else if (eq this.status 'finalized')}}
+                    <span class="badge bg-success">Finalized</span>
+                    {{else if (eq this.status 'contested')}}
+                    <span class="badge bg-warning">Contested</span>
+                    {{else}}
+                    <span class="badge bg-secondary">{{this.status}}</span>
+                    {{/if}}
+                  </td>
+                  <td>
+                    <a href="/admin/noa/{{this.id}}/view" class="btn btn-sm btn-outline-primary">View</a>
+                    {{#if (eq this.status 'issued')}}
+                    <a href="/admin/noa/{{this.id}}/create-contract" class="btn btn-sm btn-outline-success">Create Contract</a>
+                    {{/if}}
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <div class="alert alert-info">
+            <p class="mb-0">No awards have been issued yet.</p>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <!-- Export -->
+      <div class="text-center mt-4">
+        <a href="/audit/export-report?type=awards" class="btn btn-outline-secondary">Export Awards List</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Blockchain Dashboard</h1>
+        <p class="text-muted">View blockchain statistics and verification status</p>
+      </div>
+
+      <!-- Statistics Cards -->
+      <div class="row mb-4">
+        <div class="col-md-3">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Blocks</h6>
+              <h3 class="card-text">{{stats.block_count}}</h3>
+              <small class="text-muted">Blockchain blocks</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Transactions</h6>
+              <h3 class="card-text">{{stats.transaction_count}}</h3>
+              <small class="text-muted">Recorded transactions</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Confirmed Transactions</h6>
+              <h3 class="card-text">{{stats.valid_transactions}}</h3>
+              <small class="text-muted">Blockchain verified</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Verification Status</h6>
+              <h3 class="card-text">
+                {{#if (eq stats.verification_status 'valid')}}
+                <span class="badge bg-success">VALID</span>
+                {{else if (eq stats.verification_status 'invalid')}}
+                <span class="badge bg-danger">INVALID</span>
+                {{else}}
+                <span class="badge bg-warning">UNVERIFIED</span>
+                {{/if}}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Blockchain Status -->
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Blockchain Status</h5>
+              <form method="POST" action="/admin/blockchain/verify" style="display: inline;">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <button type="submit" class="btn btn-sm btn-light">Verify Chain</button>
+              </form>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Chain Status</label>
+                  <p>
+                    {{#if stats.is_valid}}
+                    <span class="badge bg-success">VALID</span>
+                    {{else}}
+                    <span class="badge bg-danger">INVALID</span>
+                    {{/if}}
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted">Last Verification</label>
+                  <p>
+                    {{#if stats.last_verified}}
+                    {{formatDateTime stats.last_verified}}
+                    {{else}}
+                    Never verified
+                    {{/if}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="alert alert-info">
+                <strong>Blockchain Integrity:</strong> The blockchain is a tamper-proof ledger of all system transactions.
+                Verify the chain to ensure data integrity and detect any unauthorized modifications.
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Blocks -->
+          <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+              <h5 class="mb-0">Recent Blocks</h5>
+            </div>
+            <div class="card-body">
+              {{#if recent_blocks.length}}
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Block #</th>
+                      <th>Hash</th>
+                      <th>Transactions</th>
+                      <th>Timestamp</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each recent_blocks}}
+                    <tr>
+                      <td><strong>#{{this.block_number}}</strong></td>
+                      <td class="font-monospace small">{{substr this.block_hash 0 20}}...</td>
+                      <td><span class="badge bg-info">{{this.transaction_count}}</span></td>
+                      <td>{{formatDate this.timestamp}}</td>
+                      <td>
+                        <a href="/admin/blockchain/block/{{this.block_number}}" class="btn btn-sm btn-outline-primary">View</a>
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+              <div class="text-center">
+                <a href="/admin/blockchain/blocks" class="btn btn-sm btn-outline-secondary">View All Blocks</a>
+              </div>
+              {{else}}
+              <p class="text-muted">No blocks recorded yet.</p>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+              <a href="/admin/blockchain/transactions" class="btn btn-outline-primary w-100 mb-2">View Transactions</a>
+              <a href="/admin/blockchain/blocks" class="btn btn-outline-secondary w-100 mb-2">View Blocks</a>
+              <a href="/admin/blockchain/explorer" class="btn btn-outline-info w-100 mb-2">Blockchain Explorer</a>
+              <a href="/admin/blockchain/export?format=json" class="btn btn-outline-success w-100">Export Data (JSON)</a>
+            </div>
+          </div>
+
+          <!-- Transaction Summary -->
+          <div class="card">
+            <div class="card-header bg-secondary text-white">
+              <h5 class="mb-0">Transaction Types</h5>
+            </div>
+            <div class="card-body">
+              {{#each tx_types}}
+              <div class="d-flex justify-content-between mb-2">
+                <span>{{this.tx_type}}</span>
+                <span class="badge bg-secondary">New</span>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h5 class="mb-0">Recent Transactions</h5>
+        </div>
+        <div class="card-body">
+          {{#if recent_transactions.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Transaction Hash</th>
+                  <th>Type</th>
+                  <th>Resource</th>
+                  <th>Status</th>
+                  <th>Block</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each recent_transactions}}
+                <tr>
+                  <td class="font-monospace small">{{substr this.tx_hash 0 20}}...</td>
+                  <td><span class="badge bg-primary">{{this.tx_type}}</span></td>
+                  <td>{{this.resource_type}}</td>
+                  <td>
+                    {{#if (eq this.status 'confirmed')}}
+                    <span class="badge bg-success">Confirmed</span>
+                    {{else if (eq this.status 'pending')}}
+                    <span class="badge bg-warning">Pending</span>
+                    {{else}}
+                    <span class="badge bg-danger">Invalid</span>
+                    {{/if}}
+                  </td>
+                  <td>{{this.block_number}}</td>
+                  <td>{{formatDate this.timestamp}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <p class="text-muted">No transactions recorded yet.</p>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

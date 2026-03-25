@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Municipal Procurement System</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{>sidebar}}
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>{{title}}</h1>
+        <p class="text-muted">{{procurement.title}}</p>
+      </div>
+
+      {{#if messages.error_msg}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{messages.error_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      {{#if messages.success_msg}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{messages.success_msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      {{/if}}
+
+      <!-- Procurement Summary -->
+      <div class="card mb-4">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Procurement Details</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="form-label text-muted">Mode</label>
+              <p><strong>{{procurement.mode}}</strong></p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted">ABC</label>
+              <p><strong>PHP {{formatCurrency procurement.abc}}</strong></p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted">Bid Closing</label>
+              <p>{{formatDateTime procurement.bid_closing_date}}</p>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted">Status</label>
+              <p>{{procurement.status}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bid Statistics -->
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Total Bids</h6>
+              <h3 class="card-text">{{bids.length}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Submitted Bids</h6>
+              <h3 class="card-text">{{submittedCount}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h6 class="card-title text-muted">Evaluated Bids</h6>
+              <h3 class="card-text">{{evaluatedCount}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="card mb-4">
+        <div class="card-body">
+          {{#unless (eq procurement.status 'opened')}}
+          <form method="POST" action="/admin/procurement/{{procurement.id}}/open-bids" style="display: inline;">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button type="submit" class="btn btn-primary" onclick="return confirm('Open all submitted bids? This action cannot be undone.')">
+              Open Bids
+            </button>
+          </form>
+          {{/unless}}
+
+          {{#if (eq procurement.status 'opened')}}
+          <a href="/admin/procurement/{{procurement.id}}/rankings" class="btn btn-secondary">View Rankings</a>
+          {{/if}}
+
+          {{#if (eq procurement.status 'evaluated')}}
+          <a href="/admin/procurement/{{procurement.id}}/award-winner" class="btn btn-success">Award Winner</a>
+          {{/if}}
+        </div>
+      </div>
+
+      <!-- Bids Table -->
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Submitted Bids</h5>
+        </div>
+        <div class="card-body">
+          {{#if bids.length}}
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Bidder</th>
+                  <th>Email</th>
+                  <th>Bid Amount</th>
+                  <th>Submission Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each bids}}
+                <tr>
+                  <td><strong>{{this.bidder_name}}</strong></td>
+                  <td>{{this.bidder_email}}</td>
+                  <td>
+                    <strong>PHP {{formatCurrency this.bid_amount}}</strong>
+                  </td>
+                  <td>{{formatDateTime this.submission_date}}</td>
+                  <td>
+                    <span class="badge {{statusBadgeClass this.status}}">
+                      {{this.status}}
+                    </span>
+                  </td>
+                  <td>
+                    {{#if (eq this.status 'opened')}}
+                    <a href="/admin/procurement/{{../procurement.id}}/evaluate/{{this.id}}" class="btn btn-sm btn-primary">
+                      Evaluate
+                    </a>
+                    {{else if (eq this.status 'evaluated')}}
+                    <span class="badge bg-success">Evaluated</span>
+                    {{else}}
+                    <button class="btn btn-sm btn-outline-secondary" disabled>
+                      {{this.status}}
+                    </button>
+                    {{/if}}
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{else}}
+          <div class="alert alert-info">
+            <p class="mb-0">No bids have been submitted for this procurement yet.</p>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-4">
+        <a href="/admin/dashboard" class="btn btn-outline-secondary">Back to Dashboard</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

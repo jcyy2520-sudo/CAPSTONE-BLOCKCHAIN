@@ -18,6 +18,9 @@
     <a href="/admin/dashboard" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
       <i class="fas fa-folder-open text-xs w-4"></i> Procurements
     </a>
+    <a href="/admin/applications" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-file-alt text-xs w-4"></i> Bidder Applications
+    </a>
     <a href="/admin/bid-evaluation" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
       <i class="fas fa-gavel text-xs w-4"></i> Bids Management
     </a>
@@ -27,8 +30,8 @@
     <a href="/admin/final-ranking" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
       <i class="fas fa-chart-bar text-xs w-4"></i> Reports
     </a>
-    <a href="/admin/registrations" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
-      <i class="fas fa-user-check text-xs w-4"></i> Registrations
+    <a href="/admin/procurement/templates" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
+      <i class="fas fa-cube text-xs w-4"></i> Procurement Templates
     </a>
     <a href="/audit/report" class="flex items-center gap-3 px-4 py-2.5 text-gray-500 hover:bg-gray-50 rounded-lg text-sm font-medium">
       <i class="fas fa-link text-xs w-4"></i> Blockchain Logs

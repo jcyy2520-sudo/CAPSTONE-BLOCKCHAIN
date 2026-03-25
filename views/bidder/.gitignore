@@ -1,0 +1,42 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+package-lock.json
+
+# Build / output
+dist/
+build/
+coverage/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Runtime files / logs
+*.log
+logs/
+log/
+npm-debug.log
+
+# Uploaded files / generated artifacts (keep local)
+uploads/
+blockchain/
+ledger.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+*.seed
+tmp/
+temp/

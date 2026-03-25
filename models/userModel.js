@@ -53,6 +53,14 @@ export const User = sequelize.define("User", {
   // role and admin review fields
   role: { type: DataTypes.STRING, allowNull: false, defaultValue: "bidder" },
   approved_at: { type: DataTypes.DATE, allowNull: true },
-  rejected_reason: { type: DataTypes.TEXT, allowNull: true }
+  rejected_reason: { type: DataTypes.TEXT, allowNull: true },
+
+  // Application workflow fields
+  application_status: { type: DataTypes.ENUM('pending_application', 'under_verification', 'approved', 'rejected'), allowNull: true },
+  application_submitted_at: { type: DataTypes.DATE, allowNull: true },
+  verified_at: { type: DataTypes.DATE, allowNull: true },
+  verified_by: { type: DataTypes.INTEGER, allowNull: true },
+  verification_notes: { type: DataTypes.TEXT, allowNull: true },
+  password_created: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false }
 });
 export { sequelize }; 
